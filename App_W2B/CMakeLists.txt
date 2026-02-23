@@ -10,6 +10,8 @@ include_directories(src/ImageLoader)
 add_executable(DigitalBoard 
     src/Main.cpp 
     src/ImageLoader/ImageLoader.cpp
-)
+    src/DetectShape/Detector.cpp
+    src/JsonExport/JsonExport.cpp
+    )
 
 target_link_libraries(DigitalBoard ${OpenCV_LIBRARIES})

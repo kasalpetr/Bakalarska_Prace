@@ -129,6 +129,30 @@ DigitalBoard/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/build
 .PHONY : DigitalBoard/fast
 
+src/DetectShape/Detector.o: src/DetectShape/Detector.cpp.o
+.PHONY : src/DetectShape/Detector.o
+
+# target to build an object file
+src/DetectShape/Detector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/DetectShape/Detector.cpp.o
+.PHONY : src/DetectShape/Detector.cpp.o
+
+src/DetectShape/Detector.i: src/DetectShape/Detector.cpp.i
+.PHONY : src/DetectShape/Detector.i
+
+# target to preprocess a source file
+src/DetectShape/Detector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/DetectShape/Detector.cpp.i
+.PHONY : src/DetectShape/Detector.cpp.i
+
+src/DetectShape/Detector.s: src/DetectShape/Detector.cpp.s
+.PHONY : src/DetectShape/Detector.s
+
+# target to generate assembly for a file
+src/DetectShape/Detector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/DetectShape/Detector.cpp.s
+.PHONY : src/DetectShape/Detector.cpp.s
+
 src/ImageLoader/ImageLoader.o: src/ImageLoader/ImageLoader.cpp.o
 .PHONY : src/ImageLoader/ImageLoader.o
 
@@ -152,6 +176,30 @@ src/ImageLoader/ImageLoader.s: src/ImageLoader/ImageLoader.cpp.s
 src/ImageLoader/ImageLoader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/ImageLoader/ImageLoader.cpp.s
 .PHONY : src/ImageLoader/ImageLoader.cpp.s
+
+src/JsonExport/JsonExport.o: src/JsonExport/JsonExport.cpp.o
+.PHONY : src/JsonExport/JsonExport.o
+
+# target to build an object file
+src/JsonExport/JsonExport.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o
+.PHONY : src/JsonExport/JsonExport.cpp.o
+
+src/JsonExport/JsonExport.i: src/JsonExport/JsonExport.cpp.i
+.PHONY : src/JsonExport/JsonExport.i
+
+# target to preprocess a source file
+src/JsonExport/JsonExport.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.i
+.PHONY : src/JsonExport/JsonExport.cpp.i
+
+src/JsonExport/JsonExport.s: src/JsonExport/JsonExport.cpp.s
+.PHONY : src/JsonExport/JsonExport.s
+
+# target to generate assembly for a file
+src/JsonExport/JsonExport.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.s
+.PHONY : src/JsonExport/JsonExport.cpp.s
 
 src/Main.o: src/Main.cpp.o
 .PHONY : src/Main.o
@@ -186,9 +234,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... DigitalBoard"
+	@echo "... src/DetectShape/Detector.o"
+	@echo "... src/DetectShape/Detector.i"
+	@echo "... src/DetectShape/Detector.s"
 	@echo "... src/ImageLoader/ImageLoader.o"
 	@echo "... src/ImageLoader/ImageLoader.i"
 	@echo "... src/ImageLoader/ImageLoader.s"
+	@echo "... src/JsonExport/JsonExport.o"
+	@echo "... src/JsonExport/JsonExport.i"
+	@echo "... src/JsonExport/JsonExport.s"
 	@echo "... src/Main.o"
 	@echo "... src/Main.i"
 	@echo "... src/Main.s"

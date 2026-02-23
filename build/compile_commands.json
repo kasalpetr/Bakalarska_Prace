@@ -8,5 +8,15 @@
   "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
   "command": "/usr/bin/g++  -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageLoader\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/ImageLoader/ImageLoader.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageLoader/ImageLoader.cpp\"",
   "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageLoader/ImageLoader.cpp"
+},
+{
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++  -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageLoader\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/DetectShape/Detector.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/DetectShape/Detector.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/DetectShape/Detector.cpp"
+},
+{
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++  -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageLoader\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExport.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExport.cpp"
 }
 ]
