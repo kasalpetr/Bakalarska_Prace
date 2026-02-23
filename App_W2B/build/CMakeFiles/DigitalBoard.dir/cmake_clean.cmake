@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/DigitalBoard.dir/src/DetectShape/Detector.cpp.o"
-  "CMakeFiles/DigitalBoard.dir/src/DetectShape/Detector.cpp.o.d"
+  "CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o"
+  "CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o.d"
+  "CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o"
+  "CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o.d"
   "CMakeFiles/DigitalBoard.dir/src/ImageLoader/ImageLoader.cpp.o"
   "CMakeFiles/DigitalBoard.dir/src/ImageLoader/ImageLoader.cpp.o.d"
   "CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o"

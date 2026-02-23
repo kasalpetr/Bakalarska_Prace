@@ -2,7 +2,7 @@
 #include <iostream>
 #include "ImageLoader/ImageLoader.hpp"
 #include <filesystem>
-#include "DetectShape/Detector.hpp"
+#include "Detector/Detector.hpp"
 #include "JsonExport/JsonExport.hpp"
 
 int main() {
@@ -14,7 +14,7 @@ int main() {
     cv::waitKey(0);
 
     Detector detector;
-    std::vector<Shape> squares = detector.detectSquares(image);
+    std::vector<Shape> squares = detector.processImage(image);
 
     std::cout << "Detected " << squares.size() << " shapes." << std::endl;
     JsonExporter::saveShapes(squares, "../json/detected_objects.json");

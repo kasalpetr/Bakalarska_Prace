@@ -129,29 +129,53 @@ DigitalBoard/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/build
 .PHONY : DigitalBoard/fast
 
-src/DetectShape/Detector.o: src/DetectShape/Detector.cpp.o
-.PHONY : src/DetectShape/Detector.o
+src/Detector/Detector.o: src/Detector/Detector.cpp.o
+.PHONY : src/Detector/Detector.o
 
 # target to build an object file
-src/DetectShape/Detector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/DetectShape/Detector.cpp.o
-.PHONY : src/DetectShape/Detector.cpp.o
+src/Detector/Detector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o
+.PHONY : src/Detector/Detector.cpp.o
 
-src/DetectShape/Detector.i: src/DetectShape/Detector.cpp.i
-.PHONY : src/DetectShape/Detector.i
+src/Detector/Detector.i: src/Detector/Detector.cpp.i
+.PHONY : src/Detector/Detector.i
 
 # target to preprocess a source file
-src/DetectShape/Detector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/DetectShape/Detector.cpp.i
-.PHONY : src/DetectShape/Detector.cpp.i
+src/Detector/Detector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.i
+.PHONY : src/Detector/Detector.cpp.i
 
-src/DetectShape/Detector.s: src/DetectShape/Detector.cpp.s
-.PHONY : src/DetectShape/Detector.s
+src/Detector/Detector.s: src/Detector/Detector.cpp.s
+.PHONY : src/Detector/Detector.s
 
 # target to generate assembly for a file
-src/DetectShape/Detector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/DetectShape/Detector.cpp.s
-.PHONY : src/DetectShape/Detector.cpp.s
+src/Detector/Detector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.s
+.PHONY : src/Detector/Detector.cpp.s
+
+src/Detector/ShapeDetector/SquareDetector.o: src/Detector/ShapeDetector/SquareDetector.cpp.o
+.PHONY : src/Detector/ShapeDetector/SquareDetector.o
+
+# target to build an object file
+src/Detector/ShapeDetector/SquareDetector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o
+.PHONY : src/Detector/ShapeDetector/SquareDetector.cpp.o
+
+src/Detector/ShapeDetector/SquareDetector.i: src/Detector/ShapeDetector/SquareDetector.cpp.i
+.PHONY : src/Detector/ShapeDetector/SquareDetector.i
+
+# target to preprocess a source file
+src/Detector/ShapeDetector/SquareDetector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.i
+.PHONY : src/Detector/ShapeDetector/SquareDetector.cpp.i
+
+src/Detector/ShapeDetector/SquareDetector.s: src/Detector/ShapeDetector/SquareDetector.cpp.s
+.PHONY : src/Detector/ShapeDetector/SquareDetector.s
+
+# target to generate assembly for a file
+src/Detector/ShapeDetector/SquareDetector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.s
+.PHONY : src/Detector/ShapeDetector/SquareDetector.cpp.s
 
 src/ImageLoader/ImageLoader.o: src/ImageLoader/ImageLoader.cpp.o
 .PHONY : src/ImageLoader/ImageLoader.o
@@ -234,9 +258,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... DigitalBoard"
-	@echo "... src/DetectShape/Detector.o"
-	@echo "... src/DetectShape/Detector.i"
-	@echo "... src/DetectShape/Detector.s"
+	@echo "... src/Detector/Detector.o"
+	@echo "... src/Detector/Detector.i"
+	@echo "... src/Detector/Detector.s"
+	@echo "... src/Detector/ShapeDetector/SquareDetector.o"
+	@echo "... src/Detector/ShapeDetector/SquareDetector.i"
+	@echo "... src/Detector/ShapeDetector/SquareDetector.s"
 	@echo "... src/ImageLoader/ImageLoader.o"
 	@echo "... src/ImageLoader/ImageLoader.i"
 	@echo "... src/ImageLoader/ImageLoader.s"

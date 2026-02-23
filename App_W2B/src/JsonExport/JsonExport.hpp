@@ -1,6 +1,6 @@
 #include <vector>
 #include <string>
-#include "../DetectShape/Shape.hpp"
+#include "../Detector/Shape.hpp"
 
 class JsonExporter {
 public:

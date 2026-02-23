@@ -3,7 +3,7 @@
 
 #include <string>
 
-struct Shape
+struct Shape // basic structure to hold detected shape information
 {
     std::string type;
     int x, y, width, height;

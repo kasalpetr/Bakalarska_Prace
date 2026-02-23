@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/DetectShape/Detector.cpp" "CMakeFiles/DigitalBoard.dir/src/DetectShape/Detector.cpp.o" "gcc" "CMakeFiles/DigitalBoard.dir/src/DetectShape/Detector.cpp.o.d"
+  "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Detector.cpp" "CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o" "gcc" "CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o.d"
+  "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/SquareDetector.cpp" "CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o" "gcc" "CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o.d"
   "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageLoader/ImageLoader.cpp" "CMakeFiles/DigitalBoard.dir/src/ImageLoader/ImageLoader.cpp.o" "gcc" "CMakeFiles/DigitalBoard.dir/src/ImageLoader/ImageLoader.cpp.o.d"
   "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExport.cpp" "CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o" "gcc" "CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o.d"
   "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Main.cpp" "CMakeFiles/DigitalBoard.dir/src/Main.cpp.o" "gcc" "CMakeFiles/DigitalBoard.dir/src/Main.cpp.o.d"

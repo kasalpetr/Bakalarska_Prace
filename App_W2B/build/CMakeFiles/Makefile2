@@ -81,12 +81,12 @@ clean: CMakeFiles/DigitalBoard.dir/clean
 CMakeFiles/DigitalBoard.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=1,2,3,4,5 "Built target DigitalBoard"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=1,2,3,4,5,6 "Built target DigitalBoard"
 .PHONY : CMakeFiles/DigitalBoard.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DigitalBoard.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" 5
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/DigitalBoard.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" 0
 .PHONY : CMakeFiles/DigitalBoard.dir/rule
