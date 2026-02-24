@@ -7,4 +7,5 @@ public:
     
 private:
     static bool validateImage(const cv::Mat& img);
+    static bool isWhiteboard(const cv::Mat& img);
 };

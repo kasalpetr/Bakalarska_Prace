@@ -7,7 +7,7 @@
 
 int main() {
     ImageLoader loader;
-    cv::Mat image = loader.loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Table.jpg");
+    cv::Mat image = loader.loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Table.png");
 
     
     cv::imshow("Loaded Image", image);
