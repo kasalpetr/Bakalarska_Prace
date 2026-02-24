@@ -1,20 +1,25 @@
 #ifndef SHAPE_HPP 
 #define SHAPE_HPP
+#include <nlohmann/json.hpp>
 
-#include <string>
+using json = nlohmann::json;
 
-struct Shape // basic structure to hold detected shape information
-{
+struct Shape { //basic structure to hold detected shape information
     std::string type;
     int x, y, width, height;
-    
 
-    std::string toJson() const
-    {
-        return "{\"type\": \"" + type + "\", \"x\": " + std::to_string(x) +
-               ", \"y\": " + std::to_string(y) + ", \"width\": " + std::to_string(width) +
-               ", \"height\": " + std::to_string(height) + "}";
+    json to_json_object() const {
+        return json{
+            {"type", type},
+            {"x", x},
+            {"y", y},
+            {"width", width},
+            {"height", height}
+        };
+    }
+
+    std::string toJson() const {
+        return to_json_object().dump(); 
     }
 };
-
 #endif // SHAPE_HPP

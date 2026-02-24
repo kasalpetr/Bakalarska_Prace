@@ -6,8 +6,7 @@
 #include "JsonExport/JsonExport.hpp"
 
 int main() {
-    ImageLoader loader;
-    cv::Mat image = loader.loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Table.png");
+    cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Table.png");
 
     
     cv::imshow("Loaded Image", image);
