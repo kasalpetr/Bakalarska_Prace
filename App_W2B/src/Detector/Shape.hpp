@@ -8,7 +8,7 @@ struct Shape { //basic structure to hold detected shape information
     std::string type;
     int x, y, width, height;
 
-    json to_json_object() const {
+    json to_json_object() const { // Convert the Shape object to a JSON object
         return json{
             {"type", type},
             {"x", x},
