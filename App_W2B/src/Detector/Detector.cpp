@@ -17,7 +17,7 @@ std::vector<Shape> Detector::processImage(const cv::Mat &image)
 
     for (auto &algo : shapeDetectors) //detect shapes using all algorithms and aggregate results
     {
-        auto shapes = algo->detect(edged);
+        auto shapes = algo->detect(edged, image); //pass both processed and original image for better detection (e.g., color info)
         allDetected.insert(allDetected.end(), shapes.begin(), shapes.end());
     }
 

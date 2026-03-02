@@ -30,13 +30,14 @@ def upload_shapes(json_path):
                 "textAlign": "center",
                 "textAlignVertical": "middle",
                 "borderStyle": "normal",
-                "borderColor": "#000000",
+                "borderColor": shape['colorHex'],
                 "borderOpacity": "1.0",
                 "borderWidth": "2.0"
 
             },
             "geometry": {
                 "width": shape.get('width', 100),
+                "rotation": shape.get('angle', 0),
                 "height": shape.get('height', 100)
             }
             }
