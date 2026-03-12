@@ -18,7 +18,7 @@ struct Shape { //basic structure to hold detected shape information
             {"y", y},
             {"width", width},
             {"height", height},
-            {"angle", angle},
+            // {"angle", angle},
             {"colorHex", colorToHex()} // Add color in hex format for better readability
         };
     }

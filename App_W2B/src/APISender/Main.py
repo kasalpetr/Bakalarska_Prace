@@ -17,7 +17,7 @@ def upload_shapes(json_path):
 
     for shape in shapes:
         payload = {
-            "data": {"shape": "rectangle"}, 
+            "data": {"shape": shape['type']}, 
             "position": {
                 "x": shape['x'], 
                 "y": shape['y']
@@ -37,7 +37,7 @@ def upload_shapes(json_path):
             },
             "geometry": {
                 "width": shape.get('width', 100),
-                "rotation": shape.get('angle', 0),
+                # "rotation": shape.get('angle', 0),
                 "height": shape.get('height', 100)
             }
             }

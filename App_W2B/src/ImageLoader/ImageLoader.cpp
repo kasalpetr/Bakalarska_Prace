@@ -14,10 +14,10 @@ cv::Mat ImageLoader::loadImage(const std::string &path)
 
 bool ImageLoader::validateImage(const cv::Mat &img) // Check if the image is valid (not empty)
 {
-    if (img.empty() || !isWhiteboard(img)) {
-        std::cerr << "Invalid image: Image is empty or does not appear to be a whiteboard." << std::endl;
-        return false;
-    }
+    // if (img.empty() || !isWhiteboard(img)) {
+    //     std::cerr << "Invalid image: Image is empty or does not appear to be a whiteboard." << std::endl;
+    //     return false;
+    // }
     return true;
 
 }

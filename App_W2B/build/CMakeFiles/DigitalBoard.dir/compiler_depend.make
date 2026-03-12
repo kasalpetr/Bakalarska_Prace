@@ -484,7 +484,8 @@ CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o: /mnt/c/FIT\ CVUT/bakala
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/ShapeDetector.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/SquareDetector.cpp \
-  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/ShapeDetector.hpp
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/ShapeDetector.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/TriangleDetector.cpp
 
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/SquareDetector.cpp \
   /usr/include/stdc-predef.h \
@@ -3044,6 +3045,8 @@ CMakeFiles/DigitalBoard.dir/src/Main.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarsk
 /usr/include/c++/11/exception:
 
 /usr/include/c++/11/bits/exception_ptr.h:
+
+/mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/TriangleDetector.cpp:
 
 /usr/include/c++/11/map:
 

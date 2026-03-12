@@ -1,9 +1,11 @@
 #include "Detector.hpp"
 #include "ShapeDetector/SquareDetector.cpp"
+#include "ShapeDetector/TriangleDetector.cpp"
 
 Detector::Detector()
 {
     shapeDetectors.push_back(std::make_unique<SquareDetector>()); //add more detectors here as needed
+    shapeDetectors.push_back(std::make_unique<TriangleDetector>());
 }
 
 std::vector<Shape> Detector::processImage(const cv::Mat &image)

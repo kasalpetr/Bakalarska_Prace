@@ -56,7 +56,7 @@ public:
                         angle = getContourAngle(approx);
                         avgBgr = getContourColor(approx, originalImage);
 
-                        found.push_back({"square", rect.x, rect.y, rect.width, rect.height, avgBgr, angle});
+                        found.push_back({"rectangle", rect.x, rect.y, rect.width, rect.height, avgBgr, angle});
                     }
                 }
             }
