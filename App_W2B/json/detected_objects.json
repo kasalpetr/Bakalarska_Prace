@@ -1,3 +1,7 @@
 [
-  {"colorHex":"#BBBBBA","height":83,"type":"rectangle","width":85,"x":116,"y":157}
+  {"colorHex":"#8FA098","height":141,"type":"rectangle","width":229,"x":582,"y":207},
+  {"colorHex":"#899E94","height":120,"type":"rectangle","width":207,"x":590,"y":216},
+  {"colorHex":"#000000","height":366,"type":"rectangle","width":95,"x":422,"y":74},
+  {"colorHex":"#83978E","height":97,"type":"rectangle","width":154,"x":414,"y":63},
+  {"colorHex":"#769488","height":60,"type":"rectangle","width":16,"x":865,"y":45}
 ]

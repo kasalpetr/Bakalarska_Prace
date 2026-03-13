@@ -5,9 +5,21 @@
 #include "Detector/Detector.hpp"
 #include "JsonExport/JsonExport.hpp"
 
-int main()
+int main(int argc, char* argv[])
 {
-    cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Table.png"); // Load the image
+
+    if (argc < 2) {
+        std::cerr << "Error: No image path provided!" << std::endl;
+        std::cout << "Usage: " << argv[0] << " <image_path>" << std::endl;
+        return 1;
+    }
+
+    std::string imagePath = argv[1];
+
+    cv::Mat image = ImageLoader::loadImage(imagePath);
+
+
+    // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Table.png"); // Load the image
 
     Detector detector;
     std::vector<Shape> squares = detector.processImage(image); // Process the image to detect shapes

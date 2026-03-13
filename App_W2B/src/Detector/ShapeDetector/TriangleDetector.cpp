@@ -70,7 +70,7 @@ public:
                 static_cast<double>(cv::norm(approx[2] - approx[0]))}};
             double minS = *std::min_element(sides.begin(), sides.end());
             double maxS = *std::max_element(sides.begin(), sides.end());
-            if (maxS == 0.0 || minS < sideRatioMin * maxS)
+            if (maxS == 0.0 || minS < sideRatioMin * maxS) // reject very elongated triangles
                 continue;
 
             // check vertex angles to reject nearly-collinear vertices
@@ -78,7 +78,7 @@ public:
             double a1 = vertexAngleDeg(approx[0], approx[1], approx[2]);
             double a2 = vertexAngleDeg(approx[1], approx[2], approx[0]);
             double minAngle = std::min({a0, a1, a2});
-            if (minAngle < minVertexAngle)
+            if (minAngle < minVertexAngle) // reject if any angle is too small (nearly collinear)
                 continue;
 
             // bounding rect size check (reject tiny detections)

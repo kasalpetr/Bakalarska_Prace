@@ -9,6 +9,24 @@ cv::Mat ImageLoader::loadImage(const std::string &path)
         return cv::Mat();
     }
 
+    // const int max_width = 600;
+    // const int max_height = 800;
+
+    // double scale = std::min((double)max_width / img.cols, (double)max_height / img.rows);
+
+    // if (scale < 1.0) {
+    //     cv::Mat resizedImg;
+    //     int new_width = static_cast<int>(img.cols * scale);
+    //     int new_height = static_cast<int>(img.rows * scale);
+
+    //     cv::resize(img, resizedImg, cv::Size(new_width, new_height), 0, 0, cv::INTER_AREA);
+        
+    //     std::cout << "Image resized from " << img.cols << "x" << img.rows 
+    //               << " to " << new_width << "x" << new_height << std::endl;
+        
+    //     return resizedImg;
+    // }
+
     return img;
 }
 
