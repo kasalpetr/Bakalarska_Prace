@@ -9,7 +9,7 @@ find_package(nlohmann_json REQUIRED)
 include_directories(src/ImageLoader)
 
 add_executable(DigitalBoard 
-    src/Main.cpp 
+    src/main.cpp 
     src/ImageLoader/ImageLoader.cpp
     src/Detector/Detector.cpp
     src/JsonExport/JsonExport.cpp

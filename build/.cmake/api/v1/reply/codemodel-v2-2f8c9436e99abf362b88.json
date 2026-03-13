@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "DigitalBoard::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-DigitalBoard-Debug-b3838d035b97c27ddd1e.json",
+					"jsonFile" : "target-DigitalBoard-Debug-64e4fd7b1232ca53bbde.json",
 					"name" : "DigitalBoard",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
-		"source" : "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B"
+		"build" : "/home/kasal/Bakalarka/Bakalarska_Prace/build",
+		"source" : "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 7
 	}
 }
