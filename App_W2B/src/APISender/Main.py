@@ -46,4 +46,5 @@ def upload_shapes(json_path):
         print(f"Uploaded shape: {response.status_code}")
 
 if __name__ == "__main__":
-    upload_shapes("../json/detected_objects.json")
+    # upload_shapes("../json/detected_objects.json")
+    upload_shapes("/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/json/detected_objects.json") # debian
