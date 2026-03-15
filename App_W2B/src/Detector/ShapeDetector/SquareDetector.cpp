@@ -58,6 +58,11 @@ public:
 
                         found.push_back({"rectangle", rect.x, rect.y, rect.width, rect.height, avgBgr, angle});
                     }
+
+                    std::vector<std::vector<cv::Point>> contoursToDraw = { approx };
+            cv::drawContours(originalImage, contoursToDraw, -1, cv::Scalar(0, 255, 0), 3);
+            
+           
                 }
             }
         }

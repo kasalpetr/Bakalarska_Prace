@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     std::vector<Shape> squares = detector.processImage(image); // Process the image to detect shapes
 
     std::cout << "Detected " << squares.size() << " shapes." << std::endl;
-
+    
     // JsonExporter::saveShapes(squares, "../json/detected_objects.json");
     JsonExporter::saveShapes(squares, "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/json/detected_objects.json"); // debiani
     // system("python3 ../src/APISender/Main.py");
