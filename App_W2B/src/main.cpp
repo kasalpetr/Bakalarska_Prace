@@ -1,7 +1,7 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
-#include "ImageLoader/ImageLoader.hpp"
 #include <filesystem>
+#include "ImageLoader/ImageLoader.hpp"
 #include "Detector/Detector.hpp"
 #include "JsonExport/JsonExport.hpp"
 
@@ -18,19 +18,26 @@ int main(int argc, char *argv[])
 
     // cv::Mat image = ImageLoader::loadImage(imagePath);
 
-    //
-    // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Table.png"); // Load the image
-    cv::Mat image = ImageLoader::loadImage("/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/Img/Table2.png"); // Load the image for debian
+    cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Shape.png"); // Load the image
+    // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Shape2.jpg"); // Load the image
+
+    // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/BasicRectangle.png"); // Load the image
+    // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Rectangle.png"); // Load the image
+
+
+
+    // cv::Mat image = ImageLoader::loadImage("/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/Img/Table2.png"); // Load the image for debian
 
     Detector detector;
     std::vector<Shape> squares = detector.processImage(image); // Process the image to detect shapes
 
     std::cout << "Detected " << squares.size() << " shapes." << std::endl;
-    
-    // JsonExporter::saveShapes(squares, "../json/detected_objects.json");
-    JsonExporter::saveShapes(squares, "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/json/detected_objects.json"); // debiani
-    // system("python3 ../src/APISender/Main.py");
-    system("python3 /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/APISender/Main.py"); // debian
+
+    JsonExporter::saveShapes(squares, "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/json/detected_objects.json");
+    // JsonExporter::saveShapes(squares, "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/json/detected_objects.json"); // debiani
+
+    system("python3 \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/APISender/Main.py\""); // Call the Python script to upload JSON data to API");
+    // system("python3 /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/APISender/Main.py"); // debian
 
     cv::imshow("Loaded Image", image); // Display the loaded image
     cv::waitKey(0);

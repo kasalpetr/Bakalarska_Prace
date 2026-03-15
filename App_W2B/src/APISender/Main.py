@@ -16,11 +16,14 @@ def upload_shapes(json_path):
     }
 
     for shape in shapes:
+        center_x = shape['x'] + shape.get('width', 100) / 2
+        center_y = shape['y'] + shape.get('height', 100) / 2
+
         payload = {
             "data": {"shape": shape['type']}, 
             "position": {
-                "x": shape['x'], 
-                "y": shape['y']
+                "x": center_x,
+                "y": center_y
             },
             "style": {
                 "fillColor": "#ffffff",
@@ -46,5 +49,5 @@ def upload_shapes(json_path):
         print(f"Uploaded shape: {response.status_code}")
 
 if __name__ == "__main__":
-    # upload_shapes("../json/detected_objects.json")
-    upload_shapes("/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/json/detected_objects.json") # debian
+    upload_shapes("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/json/detected_objects.json")
+    # upload_shapes("/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/json/detected_objects.json") # debian

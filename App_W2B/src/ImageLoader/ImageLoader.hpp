@@ -1,5 +1,5 @@
-#include <opencv2/opencv.hpp>
 #include <string>
+#include <opencv2/opencv.hpp>
 
 class ImageLoader {
 public:

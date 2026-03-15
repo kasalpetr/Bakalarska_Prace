@@ -1,7 +1,6 @@
 [
-  {"colorHex":"#8FA097","height":141,"type":"rectangle","width":229,"x":582,"y":207},
-  {"colorHex":"#000000","height":269,"type":"rectangle","width":97,"x":420,"y":74},
-  {"colorHex":"#54A462","height":131,"type":"rectangle","width":36,"x":410,"y":66},
-  {"colorHex":"#A3A9A3","height":57,"type":"rectangle","width":70,"x":802,"y":57},
-  {"colorHex":"#91A098","height":73,"type":"rectangle","width":33,"x":851,"y":47}
+  {"colorHex":"#9AA19B","height":168,"type":"rectangle","width":192,"x":190,"y":236},
+  {"colorHex":"#92A199","height":59,"type":"rectangle","width":94,"x":259,"y":302},
+  {"colorHex":"#A4A7A1","height":163,"type":"triangle","width":204,"x":184,"y":53},
+  {"colorHex":"#909F96","height":128,"type":"circle","width":128,"x":432,"y":79}
 ]
