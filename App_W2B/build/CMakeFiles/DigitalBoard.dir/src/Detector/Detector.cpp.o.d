@@ -409,6 +409,7 @@ CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o: \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/ShapeDetector.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/../Shape.hpp \
+ /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/GeometryUtils.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/SquareDetector.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/ShapeDetector.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/TriangleDetector.hpp \

@@ -111,10 +111,24 @@ CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Detector.cpp" -o CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.s
 
+CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o: CMakeFiles/DigitalBoard.dir/flags.make
+CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/GeometryUtils.cpp
+CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o: CMakeFiles/DigitalBoard.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o -MF CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o.d -o CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o -c "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/GeometryUtils.cpp"
+
+CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/GeometryUtils.cpp" > CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.i
+
+CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/GeometryUtils.cpp" -o CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.s
+
 CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o: CMakeFiles/DigitalBoard.dir/flags.make
 CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExport.cpp
 CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o: CMakeFiles/DigitalBoard.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o -MF CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o.d -o CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o -c "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExport.cpp"
 
 CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.s: cmake_force
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o: CMakeFiles/DigitalBoard.dir/flags.make
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/SquareDetector.cpp
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o: CMakeFiles/DigitalBoard.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o -MF CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o.d -o CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o -c "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/SquareDetector.cpp"
 
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.s: cma
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o: CMakeFiles/DigitalBoard.dir/flags.make
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/TriangleDetector.cpp
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o: CMakeFiles/DigitalBoard.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o -MF CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o.d -o CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o -c "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/TriangleDetector.cpp"
 
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.s: c
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o: CMakeFiles/DigitalBoard.dir/flags.make
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/CircleDetector.cpp
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o: CMakeFiles/DigitalBoard.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o -MF CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o.d -o CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o -c "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/CircleDetector.cpp"
 
 CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.i: cmake_force
@@ -172,6 +186,7 @@ DigitalBoard_OBJECTS = \
 "CMakeFiles/DigitalBoard.dir/src/main.cpp.o" \
 "CMakeFiles/DigitalBoard.dir/src/ImageLoader/ImageLoader.cpp.o" \
 "CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o" \
+"CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o" \
 "CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o" \
 "CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o" \
 "CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o" \
@@ -183,6 +198,7 @@ DigitalBoard_EXTERNAL_OBJECTS =
 DigitalBoard: CMakeFiles/DigitalBoard.dir/src/main.cpp.o
 DigitalBoard: CMakeFiles/DigitalBoard.dir/src/ImageLoader/ImageLoader.cpp.o
 DigitalBoard: CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o
+DigitalBoard: CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o
 DigitalBoard: CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o
 DigitalBoard: CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o
 DigitalBoard: CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o
@@ -243,7 +259,7 @@ DigitalBoard: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.5.4d
 DigitalBoard: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.5.4d
 DigitalBoard: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.5.4d
 DigitalBoard: CMakeFiles/DigitalBoard.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable DigitalBoard"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable DigitalBoard"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DigitalBoard.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

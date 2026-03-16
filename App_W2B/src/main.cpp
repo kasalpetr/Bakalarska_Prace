@@ -18,8 +18,8 @@ int main(int argc, char *argv[])
 
     // cv::Mat image = ImageLoader::loadImage(imagePath);
 
-    cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Shape.png"); // Load the image
-    // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Shape2.jpg"); // Load the image
+    // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Shape.png"); // Load the image
+    cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Shape2.jpg"); // Load the image
 
     // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/BasicRectangle.png"); // Load the image
     // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Rectangle.png"); // Load the image

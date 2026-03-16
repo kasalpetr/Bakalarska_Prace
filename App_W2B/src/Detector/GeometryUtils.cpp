@@ -1,6 +1,6 @@
 #include "GeometryUtils.hpp"
 
-double GeometryUtils::rectIntersectionOverUnion(const cv::Rect &a, const cv::Rect &b)
+double GeometryUtils::rectIntersectionOverUnion(const cv::Rect &a, const cv::Rect &b) // Calculate the Intersection over Union (IoU) of two shape
 {
     cv::Rect inter = a & b;
     if (inter.area() <= 0)

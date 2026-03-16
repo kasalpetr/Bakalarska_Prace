@@ -153,6 +153,30 @@ src/Detector/Detector.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.s
 .PHONY : src/Detector/Detector.cpp.s
 
+src/Detector/GeometryUtils.o: src/Detector/GeometryUtils.cpp.o
+.PHONY : src/Detector/GeometryUtils.o
+
+# target to build an object file
+src/Detector/GeometryUtils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o
+.PHONY : src/Detector/GeometryUtils.cpp.o
+
+src/Detector/GeometryUtils.i: src/Detector/GeometryUtils.cpp.i
+.PHONY : src/Detector/GeometryUtils.i
+
+# target to preprocess a source file
+src/Detector/GeometryUtils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.i
+.PHONY : src/Detector/GeometryUtils.cpp.i
+
+src/Detector/GeometryUtils.s: src/Detector/GeometryUtils.cpp.s
+.PHONY : src/Detector/GeometryUtils.s
+
+# target to generate assembly for a file
+src/Detector/GeometryUtils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.s
+.PHONY : src/Detector/GeometryUtils.cpp.s
+
 src/Detector/ShapeDetector/CircleDetector.o: src/Detector/ShapeDetector/CircleDetector.cpp.o
 .PHONY : src/Detector/ShapeDetector/CircleDetector.o
 
@@ -309,6 +333,9 @@ help:
 	@echo "... src/Detector/Detector.o"
 	@echo "... src/Detector/Detector.i"
 	@echo "... src/Detector/Detector.s"
+	@echo "... src/Detector/GeometryUtils.o"
+	@echo "... src/Detector/GeometryUtils.i"
+	@echo "... src/Detector/GeometryUtils.s"
 	@echo "... src/Detector/ShapeDetector/CircleDetector.o"
 	@echo "... src/Detector/ShapeDetector/CircleDetector.i"
 	@echo "... src/Detector/ShapeDetector/CircleDetector.s"

@@ -407,4 +407,5 @@ CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o: \
  /usr/include/nlohmann/detail/conversions/to_chars.hpp \
  /usr/include/nlohmann/ordered_map.hpp \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
- /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+ /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+ /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/../GeometryUtils.hpp
