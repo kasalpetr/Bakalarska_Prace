@@ -1,3 +1,0 @@
-/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles/DigitalBoard.dir
-/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles/edit_cache.dir
-/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/build/CMakeFiles/rebuild_cache.dir
