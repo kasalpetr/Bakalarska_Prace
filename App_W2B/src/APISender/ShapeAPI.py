@@ -3,54 +3,54 @@ from pathlib import Path
 
 import requests
 
-from Config import MIRO_API_TOKEN, MIRO_BOARD_ID, SHAPES_JSON_PATH
+from Config import miroApiToken, miroBoardId, shapesJsonPath
 
 
-SHAPES_URL = f"https://api.miro.com/v2/boards/{MIRO_BOARD_ID}/shapes"
-DEFAULT_SHAPE_SIZE = 100
-SHAPE_TYPE_MAP = {
+shapesUrl = f"https://api.miro.com/v2/boards/{miroBoardId}/shapes"
+defaultShapeSize = 100
+shapeTypeMap = {
 	"rectangle": "rectangle",
 	"circle": "circle",
 	"triangle": "triangle",
 }
 
 
-def _build_headers(api_token): # Build the HTTP headers for API requests, including authorization using the provided API token
+def buildHeaders(apiToken):
 	return {
 		"accept": "application/json",
 		"content-type": "application/json",
-		"authorization": f"Bearer {api_token}",
+		"authorization": f"Bearer {apiToken}",
 	}
 
 
-def _shape_center(shape): # Calculate the center coordinates and dimensions of a shape based on its properties
-	width = shape.get("width", DEFAULT_SHAPE_SIZE)
-	height = shape.get("height", DEFAULT_SHAPE_SIZE)
-	center_x = shape.get("x", 0) + width / 2
-	center_y = shape.get("y", 0) + height / 2
-	return center_x, center_y, width, height
+def getShapeCenter(shape):
+	width = shape.get("width", defaultShapeSize)
+	height = shape.get("height", defaultShapeSize)
+	centerX = shape.get("x", 0) + width / 2
+	centerY = shape.get("y", 0) + height / 2
+	return centerX, centerY, width, height
 
 
-def upload_shapes(json_path=SHAPES_JSON_PATH, api_token=MIRO_API_TOKEN): # Upload shapes to Miro board using the provided JSON file and API token
-	json_path = Path(json_path)
-	if not json_path.exists():
-		print(f"Shapes JSON not found: {json_path}")
+def uploadShapes(jsonPath=shapesJsonPath, apiToken=miroApiToken):
+	jsonPath = Path(jsonPath)
+	if not jsonPath.exists():
+		print(f"Shapes JSON not found: {jsonPath}")
 		return
 
-	with json_path.open("r", encoding="utf-8") as file:
+	with jsonPath.open("r", encoding="utf-8") as file:
 		shapes = json.load(file)
 
-	headers = _build_headers(api_token)
+	headers = buildHeaders(apiToken)
 
 	for shape in shapes:
-		center_x, center_y, width, height = _shape_center(shape)
-		miro_shape_type = SHAPE_TYPE_MAP.get(shape.get("type", "rectangle"), "rectangle")
+		centerX, centerY, width, height = getShapeCenter(shape)
+		miroShapeType = shapeTypeMap.get(shape.get("type", "rectangle"), "rectangle")
 
 		payload = {
-			"data": {"shape": miro_shape_type},
+			"data": {"shape": miroShapeType},
 			"position": {
-				"x": center_x,
-				"y": center_y,
+				"x": centerX,
+				"y": centerY,
 			},
 			"style": {
 				"fillColor": "#ffffff",
@@ -70,17 +70,17 @@ def upload_shapes(json_path=SHAPES_JSON_PATH, api_token=MIRO_API_TOKEN): # Uploa
 			},
 		}
 
-		response = requests.post(SHAPES_URL, json=payload, headers=headers, timeout=30)
+		response = requests.post(shapesUrl, json=payload, headers=headers, timeout=30)
 
 		if response.ok:
-			print(f"Uploaded shape {miro_shape_type}: {response.status_code}")
+			print(f"Uploaded shape {miroShapeType}: {response.status_code}")
 			continue
 
 		print(
-			f"Failed to upload shape {miro_shape_type}: "
+			f"Failed to upload shape {miroShapeType}: "
 			f"{response.status_code} {response.text}"
 		)
 
 
 if __name__ == "__main__":
-	upload_shapes()
+	uploadShapes()

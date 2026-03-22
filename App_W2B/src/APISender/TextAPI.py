@@ -3,35 +3,37 @@ from pathlib import Path
 
 import requests
 
-from Config import MIRO_API_TOKEN, MIRO_BOARD_ID, TEXT_JSON_PATH
+from Config import miroApiToken, miroBoardId, textJsonPath
 
 
-TEXTS_URL = f"https://api.miro.com/v2/boards/{MIRO_BOARD_ID}/texts"
-DEFAULT_TEXT_WIDTH = 120
+textsUrl = f"https://api.miro.com/v2/boards/{miroBoardId}/texts"
+defaultTextWidth = 120
+minFontSize = 10
+maxFontSize = 72
 
 
-def _build_headers(api_token): # Build the HTTP headers for API requests, including authorization using the provided API token
+def buildHeaders(apiToken):
 	return {
 		"accept": "application/json",
 		"content-type": "application/json",
-		"authorization": f"Bearer {api_token}",
+		"authorization": f"Bearer {apiToken}",
 	}
 
 
-def _extract_bounds(vertices): # Extract the minimum and maximum x and y coordinates from a list of vertices to determine the bounding box of a text annotation
-	x_values = [vertex.get("x", 0) for vertex in vertices]
-	y_values = [vertex.get("y", 0) for vertex in vertices]
+def extractBounds(vertices):
+	xValues = [vertex.get("x", 0) for vertex in vertices]
+	yValues = [vertex.get("y", 0) for vertex in vertices]
 
-	min_x = min(x_values, default=0)
-	max_x = max(x_values, default=min_x)
-	min_y = min(y_values, default=0)
-	max_y = max(y_values, default=min_y)
+	minX = min(xValues, default=0)
+	maxX = max(xValues, default=minX)
+	minY = min(yValues, default=0)
+	maxY = max(yValues, default=minY)
 
-	return min_x, min_y, max_x, max_y
+	return minX, minY, maxX, maxY
 
 
-def _read_text_annotations(json_path): # Read text annotations from the specified JSON file and return a list of annotations
-	with Path(json_path).open("r", encoding="utf-8") as file:
+def readTextAnnotations(jsonPath):
+	with Path(jsonPath).open("r", encoding="utf-8") as file:
 		payload = json.load(file)
 
 	responses = payload.get("responses", [])
@@ -42,54 +44,66 @@ def _read_text_annotations(json_path): # Read text annotations from the specifie
 	return annotations[1:] if len(annotations) > 1 else []
 
 
-def upload_texts(json_path=TEXT_JSON_PATH, api_token=MIRO_API_TOKEN): # Upload text annotations to Miro board using the provided JSON file and API token
-	json_path = Path(json_path)
-	if not json_path.exists():
-		print(f"Text JSON not found: {json_path}")
+def calculateFontSize(textContent, textWidth, textHeight):
+	charCount = max(len(textContent), 1)
+	fontByHeight = max(minFontSize, min(maxFontSize, int(round(textHeight * 0.9))))
+	fontByWidth = max(minFontSize, min(maxFontSize, int(round((textWidth / charCount) * 1.65))))
+	return min(fontByHeight, fontByWidth)
+
+
+def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken):
+	jsonPath = Path(jsonPath)
+	if not jsonPath.exists():
+		print(f"Text JSON not found: {jsonPath}")
 		return
 
-	annotations = _read_text_annotations(json_path)
+	annotations = readTextAnnotations(jsonPath)
 	if not annotations:
 		print("No text annotations found for upload.")
 		return
 
-	headers = _build_headers(api_token)
+	headers = buildHeaders(apiToken)
 
 	for annotation in annotations:
-		text_content = annotation.get("description", "").strip()
-		if not text_content:
+		textContent = annotation.get("description", "").strip()
+		if not textContent:
 			continue
 
 		vertices = annotation.get("boundingPoly", {}).get("vertices", [])
-		min_x, min_y, max_x, max_y = _extract_bounds(vertices)
-		width = max(DEFAULT_TEXT_WIDTH, max_x - min_x)
-		center_x = min_x + width / 2
-		center_y = min_y + (max_y - min_y) / 2
+		minX, minY, maxX, maxY = extractBounds(vertices)
+		textWidth = max(defaultTextWidth, maxX - minX)
+		textHeight = max(1, maxY - minY)
+		centerX = minX + textWidth / 2
+		centerY = minY + textHeight / 2
+		fontSize = calculateFontSize(textContent, textWidth, textHeight)
 
 		payload = {
 			"data": {
-				"content": text_content,
+				"content": textContent,
 			},
+			"style": {
+				"fontSize": str(fontSize),
+            },
 			"position": {
-				"x": center_x,
-				"y": center_y,
+				"x": centerX,
+				"y": centerY,
 			},
 			"geometry": {
-				"width": width,
+				"width": textWidth,
 			},
 		}
 
-		response = requests.post(TEXTS_URL, json=payload, headers=headers, timeout=30)
+		response = requests.post(textsUrl, json=payload, headers=headers, timeout=30)
 
 		if response.ok:
-			print(f"Uploaded text '{text_content}': {response.status_code}")
+			print(f"Uploaded text '{textContent}' with fontSize {fontSize}: {response.status_code}")
 			continue
 
 		print(
-			f"Failed to upload text '{text_content}': "
+			f"Failed to upload text '{textContent}': "
 			f"{response.status_code} {response.text}"
 		)
 
 
 if __name__ == "__main__":
-	upload_texts()
+	uploadTexts()

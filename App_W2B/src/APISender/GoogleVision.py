@@ -2,36 +2,39 @@ import base64
 import requests
 import json
 import sys
+from pathlib import Path
 
-API_KEY = "AIzaSyBe-G8nctRHZdRkWcltqKr7cEHFen0m05c"
+from Config import googleVisionApiKey, textJsonPath
 
-def test_google_vision(img_path): # Call the Google Vision API to perform text detection on the specified image and save the results to a JSON file
-    with open(img_path, "rb") as f:
-        img_base64 = base64.b64encode(f.read()).decode("utf-8")
 
-    url = f"https://vision.googleapis.com/v1/images:annotate?key={API_KEY}"
-    payload = {
+def detectTextWithGoogleVision(imagePath):
+    with open(imagePath, "rb") as imageFile:
+        imageBase64 = base64.b64encode(imageFile.read()).decode("utf-8")
+
+    requestUrl = f"https://vision.googleapis.com/v1/images:annotate?key={googleVisionApiKey}"
+    requestPayload = {
         "requests": [{
-            "image": {"content": img_base64},
+            "image": {"content": imageBase64},
             "features": [{"type": "DOCUMENT_TEXT_DETECTION"}]
         }]
     }
 
-    response = requests.post(url, json=payload)
-    
+    response = requests.post(requestUrl, json=requestPayload)
+
     if response.status_code != 200:
         print("Error:", response.text)
         return
 
-    data = response.json() 
-    
-    with open("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/json/detectedText.json", "w") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2) # Save the API response to a JSON file for later use in uploading text annotations to the Miro board
-    
+    responseData = response.json()
+
+    outputPath = Path(textJsonPath)
+    with outputPath.open("w", encoding="utf-8") as outputFile:
+        json.dump(responseData, outputFile, ensure_ascii=False, indent=2)
+
 
 if __name__ == "__main__":
-        if len(sys.argv) > 1:
-            image_path = sys.argv[1]
-        else:
-            raise EOFError("No image path provided.")
-        test_google_vision(image_path)
+    if len(sys.argv) > 1:
+        imagePath = sys.argv[1]
+    else:
+        raise EOFError("No image path provided.")
+    detectTextWithGoogleVision(imagePath)
