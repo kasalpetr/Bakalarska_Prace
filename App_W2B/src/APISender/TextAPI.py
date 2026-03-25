@@ -32,7 +32,28 @@ def extractBounds(vertices):
 	return minX, minY, maxX, maxY
 
 
-def readTextAnnotations(jsonPath):
+def reconstructWordText(word):
+	text = ""
+	for symbol in word.get("symbols", []):
+		text += symbol.get("text", "")
+		breakType = symbol.get("property", {}).get("detectedBreak", {}).get("type", "")
+		if breakType in ("SPACE", "EOL_SURE_SPACE"):
+			text += " "
+		elif breakType == "LINE_BREAK":
+			text += "\n"
+	return text
+
+
+def reconstructBlockText(block):
+	parts = []
+	for paragraph in block.get("paragraphs", []):
+		paragraphText = "".join(reconstructWordText(w) for w in paragraph.get("words", [])).strip()
+		if paragraphText:
+			parts.append(paragraphText)
+	return "\n".join(parts)
+
+
+def readTextBlocks(jsonPath):
 	with Path(jsonPath).open("r", encoding="utf-8") as file:
 		payload = json.load(file)
 
@@ -40,8 +61,11 @@ def readTextAnnotations(jsonPath):
 	if not responses:
 		return []
 
-	annotations = responses[0].get("textAnnotations", [])
-	return annotations[1:] if len(annotations) > 1 else []
+	pages = responses[0].get("fullTextAnnotation", {}).get("pages", [])
+	if not pages:
+		return []
+
+	return pages[0].get("blocks", [])
 
 
 def calculateFontSize(textContent, textWidth, textHeight):
@@ -57,25 +81,25 @@ def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken):
 		print(f"Text JSON not found: {jsonPath}")
 		return
 
-	annotations = readTextAnnotations(jsonPath)
-	if not annotations:
-		print("No text annotations found for upload.")
+	blocks = readTextBlocks(jsonPath)
+	if not blocks:
+		print("No text blocks found for upload.")
 		return
 
 	headers = buildHeaders(apiToken)
 
-	for annotation in annotations:
-		textContent = annotation.get("description", "").strip()
+	for block in blocks:
+		textContent = reconstructBlockText(block)
 		if not textContent:
 			continue
 
-		vertices = annotation.get("boundingPoly", {}).get("vertices", [])
+		vertices = block.get("boundingBox", {}).get("vertices", [])
 		minX, minY, maxX, maxY = extractBounds(vertices)
 		textWidth = max(defaultTextWidth, maxX - minX)
 		textHeight = max(1, maxY - minY)
 		centerX = minX + textWidth / 2
 		centerY = minY + textHeight / 2
-		fontSize = calculateFontSize(textContent, textWidth, textHeight)
+		fontSize = calculateFontSize(textContent.split("\n")[0], textWidth, textHeight)
 
 		payload = {
 			"data": {
@@ -96,11 +120,13 @@ def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken):
 		response = requests.post(textsUrl, json=payload, headers=headers, timeout=30)
 
 		if response.ok:
-			print(f"Uploaded text '{textContent}' with fontSize {fontSize}: {response.status_code}")
+			preview = textContent.split("\n")[0][:40]
+			print(f"Uploaded text '{preview}' fontSize {fontSize}: {response.status_code}")
 			continue
 
+		preview = textContent.split("\n")[0][:40]
 		print(
-			f"Failed to upload text '{textContent}': "
+			f"Failed to upload text '{preview}': "
 			f"{response.status_code} {response.text}"
 		)
 
