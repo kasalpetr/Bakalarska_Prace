@@ -1,4 +1,4 @@
-#include "JsonExport.hpp"
+#include "JsonExporter.hpp"
 #include <fstream>
 
 void JsonExporter::saveShapes(const std::vector<Shape>& shapes, const std::string& filename) {

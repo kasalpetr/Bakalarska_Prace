@@ -43,7 +43,8 @@ std::vector<Shape> TriangleDetector::detect(const cv::Mat &processedImage, const
     const double sideRatioMin = 0.2;
     const double minVertexAngle = 4.0;
 
-    for (size_t i = 0; i < contours.size(); ++i)
+    for (size_t i = 0; i < contours.size(); ++i) // Iterate through each contour and apply various checks to determine if it is a valid triangle, 
+    // and if so, extract its properties and add it to the list of found shapes
     {
         std::vector<cv::Point> approx;
         double peri = cv::arcLength(contours[i], true);
@@ -57,7 +58,7 @@ std::vector<Shape> TriangleDetector::detect(const cv::Mat &processedImage, const
             continue;
 
         double area = std::abs(cv::contourArea(approx));
-        if (area < minArea)
+        if (area < minArea) // Filter out small triangles based on area
             continue;
 
         std::array<double, 3> sides = {{
@@ -66,18 +67,18 @@ std::vector<Shape> TriangleDetector::detect(const cv::Mat &processedImage, const
             static_cast<double>(cv::norm(approx[2] - approx[0]))}};
         double minS = *std::min_element(sides.begin(), sides.end());
         double maxS = *std::max_element(sides.begin(), sides.end());
-        if (maxS == 0.0 || minS < sideRatioMin * maxS)
+        if (maxS == 0.0 || minS < sideRatioMin * maxS) // Filter out triangles that are too elongated based on the ratio of the shortest to longest side
             continue;
 
         double a0 = this->vertexAngleDeg(approx[2], approx[0], approx[1]);
         double a1 = this->vertexAngleDeg(approx[0], approx[1], approx[2]);
         double a2 = this->vertexAngleDeg(approx[1], approx[2], approx[0]);
         double minAngle = std::min({a0, a1, a2});
-        if (minAngle < minVertexAngle)
+        if (minAngle < minVertexAngle) // Filter out triangles that have a very small angle, which may indicate that they are not well-defined triangles
             continue;
 
-        cv::Rect rect = cv::boundingRect(approx);
-        if (rect.width <= 25 || rect.height <= 25)
+        cv::Rect rect = cv::boundingRect(approx); // Get the bounding rectangle of the triangle
+        if (rect.width <= 25 || rect.height <= 25) // Filter out triangles that are too small based on their bounding rectangle
             continue;
 
         bool isDuplicate = false;

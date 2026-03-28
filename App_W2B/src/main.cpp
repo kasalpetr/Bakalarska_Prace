@@ -2,15 +2,16 @@
 #include <iostream>
 #include <filesystem>
 #include <cstdlib>
-#include "ImageLoader/ImageLoader.hpp"
+#include "ImageWork/ImageLoader.hpp"
 #include "Detector/Detector.hpp"
-#include "JsonExport/JsonExport.hpp"
+#include "JsonExport/JsonExporter.hpp"
+#include "ImageWork/ImageMask.hpp"
 
 int main(int argc, char *argv[])
 {
 
     // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Shape.png"); // Load the image
-    cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Table2.jpg"); // Load the image
+    cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/TextShape.jpg"); // Load the image
     // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/BasicRectangle.png"); // Load the image
     // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Rectangle.png"); // Load the image
 
@@ -36,6 +37,9 @@ int main(int argc, char *argv[])
     // system("python3 /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/APISender/Main.py"); // debian
 
     cv::imshow("Loaded Image", image); // Display the loaded image
+    cv::Mat mask = ImageMask::createMask(image); // Create a mask from the image
+    cv::imshow("Mask", mask); // Display the created mask
+    
     cv::waitKey(0);
     return 0;
 }

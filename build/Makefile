@@ -249,77 +249,101 @@ src/Detector/ShapeDetector/TriangleDetector.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.s
 .PHONY : src/Detector/ShapeDetector/TriangleDetector.cpp.s
 
-src/ImageLoader/ImageLoader.o: src/ImageLoader/ImageLoader.cpp.o
-.PHONY : src/ImageLoader/ImageLoader.o
+src/ImageWork/ImageLoader.o: src/ImageWork/ImageLoader.cpp.o
+.PHONY : src/ImageWork/ImageLoader.o
 
 # target to build an object file
-src/ImageLoader/ImageLoader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/ImageLoader/ImageLoader.cpp.o
-.PHONY : src/ImageLoader/ImageLoader.cpp.o
+src/ImageWork/ImageLoader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageLoader.cpp.o
+.PHONY : src/ImageWork/ImageLoader.cpp.o
 
-src/ImageLoader/ImageLoader.i: src/ImageLoader/ImageLoader.cpp.i
-.PHONY : src/ImageLoader/ImageLoader.i
+src/ImageWork/ImageLoader.i: src/ImageWork/ImageLoader.cpp.i
+.PHONY : src/ImageWork/ImageLoader.i
 
 # target to preprocess a source file
-src/ImageLoader/ImageLoader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/ImageLoader/ImageLoader.cpp.i
-.PHONY : src/ImageLoader/ImageLoader.cpp.i
+src/ImageWork/ImageLoader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageLoader.cpp.i
+.PHONY : src/ImageWork/ImageLoader.cpp.i
 
-src/ImageLoader/ImageLoader.s: src/ImageLoader/ImageLoader.cpp.s
-.PHONY : src/ImageLoader/ImageLoader.s
+src/ImageWork/ImageLoader.s: src/ImageWork/ImageLoader.cpp.s
+.PHONY : src/ImageWork/ImageLoader.s
 
 # target to generate assembly for a file
-src/ImageLoader/ImageLoader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/ImageLoader/ImageLoader.cpp.s
-.PHONY : src/ImageLoader/ImageLoader.cpp.s
+src/ImageWork/ImageLoader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageLoader.cpp.s
+.PHONY : src/ImageWork/ImageLoader.cpp.s
 
-src/JsonExport/JsonExport.o: src/JsonExport/JsonExport.cpp.o
-.PHONY : src/JsonExport/JsonExport.o
+src/ImageWork/ImageMask.o: src/ImageWork/ImageMask.cpp.o
+.PHONY : src/ImageWork/ImageMask.o
 
 # target to build an object file
-src/JsonExport/JsonExport.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.o
-.PHONY : src/JsonExport/JsonExport.cpp.o
+src/ImageWork/ImageMask.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageMask.cpp.o
+.PHONY : src/ImageWork/ImageMask.cpp.o
 
-src/JsonExport/JsonExport.i: src/JsonExport/JsonExport.cpp.i
-.PHONY : src/JsonExport/JsonExport.i
+src/ImageWork/ImageMask.i: src/ImageWork/ImageMask.cpp.i
+.PHONY : src/ImageWork/ImageMask.i
 
 # target to preprocess a source file
-src/JsonExport/JsonExport.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.i
-.PHONY : src/JsonExport/JsonExport.cpp.i
+src/ImageWork/ImageMask.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageMask.cpp.i
+.PHONY : src/ImageWork/ImageMask.cpp.i
 
-src/JsonExport/JsonExport.s: src/JsonExport/JsonExport.cpp.s
-.PHONY : src/JsonExport/JsonExport.s
+src/ImageWork/ImageMask.s: src/ImageWork/ImageMask.cpp.s
+.PHONY : src/ImageWork/ImageMask.s
 
 # target to generate assembly for a file
-src/JsonExport/JsonExport.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExport.cpp.s
-.PHONY : src/JsonExport/JsonExport.cpp.s
+src/ImageWork/ImageMask.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageMask.cpp.s
+.PHONY : src/ImageWork/ImageMask.cpp.s
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+src/JsonExport/JsonExporter.o: src/JsonExport/JsonExporter.cpp.o
+.PHONY : src/JsonExport/JsonExporter.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/JsonExport/JsonExporter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExporter.cpp.o
+.PHONY : src/JsonExport/JsonExporter.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+src/JsonExport/JsonExporter.i: src/JsonExport/JsonExporter.cpp.i
+.PHONY : src/JsonExport/JsonExporter.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/JsonExport/JsonExporter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExporter.cpp.i
+.PHONY : src/JsonExport/JsonExporter.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+src/JsonExport/JsonExporter.s: src/JsonExport/JsonExporter.cpp.s
+.PHONY : src/JsonExport/JsonExporter.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/JsonExport/JsonExporter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExporter.cpp.s
+.PHONY : src/JsonExport/JsonExporter.cpp.s
+
+src/Main.o: src/Main.cpp.o
+.PHONY : src/Main.o
+
+# target to build an object file
+src/Main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Main.cpp.o
+.PHONY : src/Main.cpp.o
+
+src/Main.i: src/Main.cpp.i
+.PHONY : src/Main.i
+
+# target to preprocess a source file
+src/Main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Main.cpp.i
+.PHONY : src/Main.cpp.i
+
+src/Main.s: src/Main.cpp.s
+.PHONY : src/Main.s
+
+# target to generate assembly for a file
+src/Main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DigitalBoard.dir/build.make CMakeFiles/DigitalBoard.dir/src/Main.cpp.s
+.PHONY : src/Main.cpp.s
 
 # Help Target
 help:
@@ -345,15 +369,18 @@ help:
 	@echo "... src/Detector/ShapeDetector/TriangleDetector.o"
 	@echo "... src/Detector/ShapeDetector/TriangleDetector.i"
 	@echo "... src/Detector/ShapeDetector/TriangleDetector.s"
-	@echo "... src/ImageLoader/ImageLoader.o"
-	@echo "... src/ImageLoader/ImageLoader.i"
-	@echo "... src/ImageLoader/ImageLoader.s"
-	@echo "... src/JsonExport/JsonExport.o"
-	@echo "... src/JsonExport/JsonExport.i"
-	@echo "... src/JsonExport/JsonExport.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/ImageWork/ImageLoader.o"
+	@echo "... src/ImageWork/ImageLoader.i"
+	@echo "... src/ImageWork/ImageLoader.s"
+	@echo "... src/ImageWork/ImageMask.o"
+	@echo "... src/ImageWork/ImageMask.i"
+	@echo "... src/ImageWork/ImageMask.s"
+	@echo "... src/JsonExport/JsonExporter.o"
+	@echo "... src/JsonExport/JsonExporter.i"
+	@echo "... src/JsonExport/JsonExporter.s"
+	@echo "... src/Main.o"
+	@echo "... src/Main.i"
+	@echo "... src/Main.s"
 .PHONY : help
 
 

@@ -6,14 +6,15 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(OpenCV REQUIRED)
 find_package(nlohmann_json REQUIRED)
 
-include_directories(src/ImageLoader)
+include_directories(src/ImageWork)
 
 add_executable(DigitalBoard 
-    src/main.cpp 
-    src/ImageLoader/ImageLoader.cpp
+    src/Main.cpp 
+    src/ImageWork/ImageLoader.cpp
+    src/ImageWork/ImageMask.cpp
     src/Detector/Detector.cpp
     src/Detector/GeometryUtils.cpp
-    src/JsonExport/JsonExport.cpp
+    src/JsonExport/JsonExporter.cpp
     src/Detector/ShapeDetector/ShapeDetector.hpp
     src/Detector/ShapeDetector/SquareDetector.hpp
     src/Detector/ShapeDetector/TriangleDetector.hpp

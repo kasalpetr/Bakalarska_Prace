@@ -9,6 +9,11 @@ from Config import miroApiToken, miroBoardId, textJsonPath
 textsUrl = f"https://api.miro.com/v2/boards/{miroBoardId}/texts"
 defaultTextWidth = 120
 minFontSize = 10
+FontSize2 = 18
+FontSize3 = 24
+FontSize4 = 36
+FontSize5 = 48
+FontSize6 = 60
 maxFontSize = 72
 
 
@@ -68,11 +73,22 @@ def readTextBlocks(jsonPath):
 	return pages[0].get("blocks", [])
 
 
-def calculateFontSize(textContent, textWidth, textHeight):
-	charCount = max(len(textContent), 1)
-	fontByHeight = max(minFontSize, min(maxFontSize, int(round(textHeight * 0.9))))
-	fontByWidth = max(minFontSize, min(maxFontSize, int(round((textWidth / charCount) * 1.65))))
-	return min(fontByHeight, fontByWidth)
+def calculateFontSize(textContent, textWidth, textHeight): # calculate font and pick one of the predefined sizes
+	if textWidth <= 0 or textHeight <= 0:
+		return minFontSize
+
+	aspectRatio = textWidth / textHeight if textHeight > 0 else 1
+	if aspectRatio > 5:
+		return FontSize2
+	elif aspectRatio > 3:
+		return FontSize3
+	elif aspectRatio > 1.5:
+		return FontSize4
+	elif aspectRatio > 1:
+		return FontSize5
+	else:
+		return FontSize6
+	
 
 
 def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken):

@@ -1,23 +1,6 @@
 [
-  {"colorHex":"#C2A1A2","height":103,"type":"rectangle","width":195,"x":864,"y":600},
-  {"colorHex":"#9CB2A9","height":32,"type":"rectangle","width":36,"x":866,"y":494},
-  {"colorHex":"#BC9B9C","height":95,"type":"rectangle","width":72,"x":641,"y":262},
-  {"colorHex":"#CFADAF","height":137,"type":"rectangle","width":114,"x":1052,"y":259},
-  {"colorHex":"#C7A6A7","height":110,"type":"rectangle","width":104,"x":832,"y":258},
-  {"colorHex":"#C49FA1","height":106,"type":"rectangle","width":88,"x":729,"y":257},
-  {"colorHex":"#CBA6A9","height":134,"type":"rectangle","width":121,"x":937,"y":247},
-  {"colorHex":"#B6BAB2","height":42,"type":"rectangle","width":44,"x":921,"y":156},
-  {"colorHex":"#B1BAB0","height":35,"type":"rectangle","width":45,"x":970,"y":154},
-  {"colorHex":"#9E958C","height":36,"type":"triangle","width":68,"x":515,"y":923},
-  {"colorHex":"#A69D94","height":37,"type":"triangle","width":71,"x":634,"y":925},
-  {"colorHex":"#B8AEA4","height":28,"type":"triangle","width":52,"x":1268,"y":873},
-  {"colorHex":"#6A9B8E","height":26,"type":"circle","width":26,"x":688,"y":511},
-  {"colorHex":"#69978A","height":23,"type":"circle","width":23,"x":677,"y":497},
-  {"colorHex":"#000000","height":31,"type":"circle","width":31,"x":254,"y":456},
-  {"colorHex":"#000000","height":32,"type":"circle","width":32,"x":261,"y":308},
-  {"colorHex":"#000000","height":26,"type":"circle","width":26,"x":263,"y":310},
-  {"colorHex":"#000000","height":28,"type":"circle","width":28,"x":257,"y":154},
-  {"colorHex":"#000000","height":22,"type":"circle","width":22,"x":259,"y":157},
-  {"colorHex":"#000000","height":25,"type":"circle","width":25,"x":340,"y":175},
-  {"colorHex":"#709483","height":24,"type":"circle","width":24,"x":797,"y":101}
+  {"colorHex":"#00FF00","height":202,"type":"rectangle","width":235,"x":68,"y":677},
+  {"colorHex":"#00FF00","height":70,"type":"rectangle","width":115,"x":150,"y":755},
+  {"colorHex":"#00FF00","height":182,"type":"triangle","width":239,"x":72,"y":471},
+  {"colorHex":"#00FF00","height":92,"type":"triangle","width":40,"x":128,"y":96}
 ]

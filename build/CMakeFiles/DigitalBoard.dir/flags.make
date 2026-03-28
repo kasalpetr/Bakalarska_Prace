@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1
 
-CXX_INCLUDES = -I"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageLoader" -isystem /usr/include/opencv4
+CXX_INCLUDES = -I"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork" -isystem /usr/include/opencv4
 
 CXX_FLAGS = -g -std=gnu++17
 

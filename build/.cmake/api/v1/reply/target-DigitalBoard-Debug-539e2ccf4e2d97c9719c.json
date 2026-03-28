@@ -32,7 +32,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 26,
+				"line" : 27,
 				"parent" : 0
 			},
 			{
@@ -70,7 +70,7 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageLoader"
+					"path" : "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork"
 				},
 				{
 					"backtrace" : 2,
@@ -94,9 +94,10 @@
 				2,
 				3,
 				4,
-				9,
+				5,
 				10,
-				11
+				11,
+				12
 			]
 		}
 	],
@@ -404,19 +405,20 @@
 				2,
 				3,
 				4,
-				9,
+				5,
 				10,
-				11
+				11,
+				12
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				5,
 				6,
 				7,
-				8
+				8,
+				9
 			]
 		}
 	],
@@ -425,13 +427,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/main.cpp",
+			"path" : "src/Main.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/ImageLoader/ImageLoader.cpp",
+			"path" : "src/ImageWork/ImageLoader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/ImageWork/ImageMask.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -449,7 +457,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/JsonExport/JsonExport.cpp",
+			"path" : "src/JsonExport/JsonExporter.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
