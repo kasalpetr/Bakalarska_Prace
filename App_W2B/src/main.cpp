@@ -9,16 +9,27 @@
 
 int main(int argc, char *argv[])
 {
+    const std::filesystem::path appRoot(APP_W2B_ROOT);
 
-    // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Shape.png"); // Load the image
-    cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/TextShape.jpg"); // Load the image
-    // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/BasicRectangle.png"); // Load the image
-    // cv::Mat image = ImageLoader::loadImage("/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/Rectangle.png"); // Load the image
+    try
+    {
+        std::filesystem::current_path(appRoot);
+    }
+    catch (const std::filesystem::filesystem_error &error)
+    {
+        std::cerr << "Failed to set working directory to " << appRoot << ": " << error.what() << std::endl;
+        return 1;
+    }
+
+    // cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "Shape.png").string()); // Load the image
+    cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "TextShape2.jpg").string()); // Load the image
+    // cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "BasicRectangle.png").string()); // Load the image
+    // cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "Rectangle.png").string()); // Load the image
 
     //call Google Vision API for text detection and save the result to JSON file
-    std::string tmpPath = "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/Img/TmpGoogleVision.png"; // Temporary path for the image to be processed by Google Vision API
+    std::string tmpPath = (appRoot / "Img" / "TmpGoogleVision.png").string(); // Temporary path for the image to be processed by Google Vision API
     cv::imwrite(tmpPath, image);
-    std::string PythonText = "python3 \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/APISender/GoogleVision.py\" \"" + tmpPath + "\"";
+    std::string PythonText = "python3 \"" + (appRoot / "src" / "APISender" / "GoogleVision.py").string() + "\" \"" + tmpPath + "\"";
     system(PythonText.c_str());
     std::filesystem::remove(tmpPath); // Clean up the temporary file after processing
     
@@ -30,10 +41,10 @@ int main(int argc, char *argv[])
 
     std::cout << "Detected " << squares.size() << " shapes." << std::endl;
 
-    JsonExporter::saveShapes(squares, "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/json/detectedObjects.json");
-    // JsonExporter::saveShapes(squares, "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/json/detectedObjects.json"); // debiani
+    JsonExporter::saveShapes(squares, (appRoot / "json" / "detectedShapes.json").string());
+    // JsonExporter::saveShapes(squares, "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/json/detectedShapes.json"); // debiani
 
-    system("python3 \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/APISender/Main.py\""); // Call the Python script to upload JSON data to API");
+    system((std::string("python3 \"") + (appRoot / "src" / "APISender" / "Main.py").string() + "\"").c_str()); // Call the Python script to upload JSON data to API");
     // system("python3 /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/APISender/Main.py"); // debian
 
     cv::imshow("Loaded Image", image); // Display the loaded image

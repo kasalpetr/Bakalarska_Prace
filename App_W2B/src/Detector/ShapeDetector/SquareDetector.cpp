@@ -68,19 +68,19 @@ std::vector<Shape> SquareDetector::detect(const cv::Mat &processedImage, const c
         double peri = cv::arcLength(contours[i], true);
         cv::approxPolyDP(contours[i], approx, 0.04 * peri, true);
 
-        if (approx.size() >= 4 && approx.size() <= 6)
+        if (approx.size() >= 4 && approx.size() <= 6) // Filter contours that are not quadrilaterals (squares or rectangles)
         {
             if (!cv::isContourConvex(approx))
             {
                 continue;
             }
 
-            if (approx.size() == 4 && !this->hasMostlyRightAngles(approx))
+            if (approx.size() == 4 && !this->hasMostlyRightAngles(approx)) 
             {
                 continue;
             }
 
-            double area = std::abs(cv::contourArea(approx));
+            double area = std::abs(cv::contourArea(approx)); 
             if (area < 500.0)
             {
                 continue;
@@ -111,13 +111,14 @@ std::vector<Shape> SquareDetector::detect(const cv::Mat &processedImage, const c
                 continue;
             }
 
-            cv::Rect rect = cv::boundingRect(approx);
+            cv::Rect rect = cv::boundingRect(approx); 
             if (rect.width > 25 && rect.height > 25)
             {
                 bool isDuplicate = false;
                 for (const auto &accepted : acceptedRects)
                 {
-                    if (GeometryUtils::rectIntersectionOverUnion(rect, accepted) > 0.75)
+                    double intersectOfRectangle = GeometryUtils::rectIntersectionOverUnion(rect, accepted);
+                    if (intersectOfRectangle > 0.75 || (intersectOfRectangle > 0.35 && GeometryUtils::areLikelyDoubleEdgeRectangles(rect, accepted)))
                     {
                         isDuplicate = true;
                         break;

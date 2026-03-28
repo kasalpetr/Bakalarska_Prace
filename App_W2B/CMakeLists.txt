@@ -8,6 +8,7 @@ find_package(nlohmann_json REQUIRED)
 
 include_directories(src/ImageWork)
 
+
 add_executable(DigitalBoard 
     src/Main.cpp 
     src/ImageWork/ImageLoader.cpp
@@ -23,5 +24,9 @@ add_executable(DigitalBoard
     src/Detector/ShapeDetector/TriangleDetector.cpp
     src/Detector/ShapeDetector/CircleDetector.cpp
     )
+
+target_compile_definitions(DigitalBoard PRIVATE
+    APP_W2B_ROOT="${CMAKE_CURRENT_SOURCE_DIR}"
+)
 
 target_link_libraries(DigitalBoard ${OpenCV_LIBRARIES} nlohmann_json::nlohmann_json)

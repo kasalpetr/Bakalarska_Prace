@@ -7,5 +7,5 @@ miroBoardId = "uXjVG_yeA5I="
 
 appRoot = Path(__file__).resolve().parents[2]
 jsonDir = appRoot / "json"
-shapesJsonPath = jsonDir / "detectedObjects.json"
+shapesJsonPath = jsonDir / "detectedShapes.json"
 textJsonPath = jsonDir / "detectedText.json"
