@@ -42,7 +42,7 @@ bool SquareDetector::hasMostlyRightAngles(const std::vector<cv::Point> &quad)
     return true;
 }
 
-bool SquareDetector::isInnerSameCollor(const std::vector<cv::Point> &contour, const cv::Mat &originalImage) const
+bool SquareDetector::isInnerSameCollor(const std::vector<cv::Point> &contour, const cv::Mat &originalImage) const // Check if the interior of the contour has a similar color like border
 {
     if (contour.size() < 3 || originalImage.empty())
     {
@@ -72,6 +72,23 @@ bool SquareDetector::isInnerSameCollor(const std::vector<cv::Point> &contour, co
     int innerPixels = cv::countNonZero(innerMask);
     int borderPixels = cv::countNonZero(borderMask);
     if (innerPixels < 40 || borderPixels < 20)
+    {
+        return false;
+    }
+
+    // If interior is mostly whiteboard-like (white or near-white), do not classify as sticky note.
+    cv::Mat hsvImage;
+    cv::cvtColor(originalImage, hsvImage, cv::COLOR_BGR2HSV);
+
+    cv::Mat whiteLikeMask;
+    cv::inRange(hsvImage, cv::Scalar(0, 0, 180), cv::Scalar(179, 60, 255), whiteLikeMask);
+
+    cv::Mat whiteInnerMask;
+    cv::bitwise_and(whiteLikeMask, innerMask, whiteInnerMask);
+
+    int whiteInnerPixels = cv::countNonZero(whiteInnerMask);
+    double whiteRatio = static_cast<double>(whiteInnerPixels) / static_cast<double>(innerPixels);
+    if (whiteRatio >= 0.40)
     {
         return false;
     }
@@ -189,9 +206,9 @@ std::vector<Shape> SquareDetector::detect(const cv::Mat &processedImage, const c
 
                 float angle = this->getContourAngle(approx);
                 cv::Scalar avgBgr = this->getContourColor(approx, originalImage);
-                
-                
-                found.push_back({"rectangle", rect.x, rect.y, rect.width, rect.height, avgBgr, angle});
+
+                std::string shapeType = this->isInnerSameCollor(approx, originalImage) ? "sticky_note" : "rectangle";
+                found.push_back({shapeType, rect.x, rect.y, rect.width, rect.height, avgBgr, angle});
                 acceptedRects.push_back(rect);
             }
         }

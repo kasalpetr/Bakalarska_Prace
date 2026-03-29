@@ -54,11 +54,12 @@ void Detector::drawDetectedShapes(cv::Mat &image, const std::vector<Shape> &shap
 {
     for (const auto &shape : shapes)
     {
-        if (shape.type == "rectangle")
+        if (shape.type == "rectangle" || shape.type == "sticky_note")
         {
+            cv::Scalar rectColor = (shape.type == "sticky_note") ? cv::Scalar(0, 200, 255) : cv::Scalar(0, 255, 0);
             cv::rectangle(image,
                           cv::Rect(shape.x, shape.y, shape.width, shape.height),
-                          cv::Scalar(0, 255, 0),
+                          rectColor,
                           3);
         }
         else if (shape.type == "triangle")
@@ -89,7 +90,7 @@ bool Detector::isFalsePositiveCircle(const Shape &candidate, const std::vector<S
     cv::Rect candidateRect(candidate.x, candidate.y, candidate.width, candidate.height);
     for (const auto &shape : acceptedShapes)
     {
-        if (shape.type != "rectangle")
+        if (shape.type != "rectangle" && shape.type != "sticky_note")
         {
             continue;
         }
