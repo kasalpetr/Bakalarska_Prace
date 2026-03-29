@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "Table2.jpg").string()); // Load the image
+    cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "TextShape2.jpg").string()); // Load the image
 
     //call Google Vision API for text detection and save the result to JSON file
     std::string tmpPath = (appRoot / "Img" / "TmpGoogleVision.png").string(); // Temporary path for the image to be processed by Google Vision API

@@ -1,5 +1,6 @@
 #include "SquareDetector.hpp"
 #include "../GeometryUtils.hpp"
+#include <algorithm>
 #include <cmath>
 
 double SquareDetector::vertexAngleDeg(const cv::Point &a, const cv::Point &b, const cv::Point &c)
@@ -39,6 +40,62 @@ bool SquareDetector::hasMostlyRightAngles(const std::vector<cv::Point> &quad)
     }
 
     return true;
+}
+
+bool SquareDetector::isInnerSameCollor(const std::vector<cv::Point> &contour, const cv::Mat &originalImage) const
+{
+    if (contour.size() < 3 || originalImage.empty())
+    {
+        return false;
+    }
+
+    cv::Rect rect = cv::boundingRect(contour);
+    int minDim = std::min(rect.width, rect.height);
+    if (minDim < 12)
+    {
+        return false;
+    }
+
+    cv::Mat filledMask = cv::Mat::zeros(originalImage.size(), CV_8UC1);
+    cv::drawContours(filledMask, std::vector<std::vector<cv::Point>>{contour}, 0, cv::Scalar(255), cv::FILLED);
+
+    int erodeRadius = std::max(1, static_cast<int>(std::round(minDim * 0.08)));
+    cv::Mat erodeKernel = cv::getStructuringElement(cv::MORPH_ELLIPSE,
+                                                    cv::Size(2 * erodeRadius + 1, 2 * erodeRadius + 1));
+
+    cv::Mat innerMask;
+    cv::erode(filledMask, innerMask, erodeKernel);
+
+    cv::Mat borderMask;
+    cv::subtract(filledMask, innerMask, borderMask);
+
+    int innerPixels = cv::countNonZero(innerMask);
+    int borderPixels = cv::countNonZero(borderMask);
+    if (innerPixels < 40 || borderPixels < 20)
+    {
+        return false;
+    }
+
+    cv::Scalar borderMean = cv::mean(originalImage, borderMask);
+
+    const double tolerance = 10.0; 
+    cv::Scalar lower(std::max(0.0, borderMean[0] - tolerance),
+                     std::max(0.0, borderMean[1] - tolerance),
+                     std::max(0.0, borderMean[2] - tolerance));
+    cv::Scalar upper(std::min(255.0, borderMean[0] + tolerance),
+                     std::min(255.0, borderMean[1] + tolerance),
+                     std::min(255.0, borderMean[2] + tolerance));
+
+    cv::Mat similarColorMask;
+    cv::inRange(originalImage, lower, upper, similarColorMask);
+
+    cv::Mat similarInnerMask;
+    cv::bitwise_and(similarColorMask, innerMask, similarInnerMask);
+
+    int similarInnerPixels = cv::countNonZero(similarInnerMask);
+    double similarRatio = static_cast<double>(similarInnerPixels) / static_cast<double>(innerPixels);
+
+    return similarRatio >= 0.85;
 }
 
 float SquareDetector::getContourAngle(const std::vector<cv::Point> &contour) // Override the default implementation to get the angle of a contour
@@ -132,7 +189,8 @@ std::vector<Shape> SquareDetector::detect(const cv::Mat &processedImage, const c
 
                 float angle = this->getContourAngle(approx);
                 cv::Scalar avgBgr = this->getContourColor(approx, originalImage);
-
+                
+                
                 found.push_back({"rectangle", rect.x, rect.y, rect.width, rect.height, avgBgr, angle});
                 acceptedRects.push_back(rect);
             }
