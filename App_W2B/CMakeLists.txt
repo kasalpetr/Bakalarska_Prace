@@ -25,8 +25,6 @@ add_executable(DigitalBoard
     src/Detector/ShapeDetector/CircleDetector.cpp
     )
 
-target_compile_definitions(DigitalBoard PRIVATE
-    APP_W2B_ROOT="${CMAKE_CURRENT_SOURCE_DIR}"
-)
+target_compile_definitions(DigitalBoard PRIVATE APP_W2B_ROOT=\"${CMAKE_CURRENT_SOURCE_DIR}\")
 
 target_link_libraries(DigitalBoard ${OpenCV_LIBRARIES} nlohmann_json::nlohmann_json)

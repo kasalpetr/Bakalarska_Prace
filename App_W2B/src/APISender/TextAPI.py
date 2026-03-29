@@ -4,6 +4,7 @@ from pathlib import Path
 import requests
 
 from Config import miroApiToken, miroBoardId, textJsonPath
+from Config import shapesJsonPath
 
 
 textsUrl = f"https://api.miro.com/v2/boards/{miroBoardId}/texts"
@@ -37,7 +38,62 @@ def extractBounds(vertices):
 	return minX, minY, maxX, maxY
 
 
-def reconstructWordText(word):
+def loadDetectedShapes(jsonPath=shapesJsonPath): # Load the detected shapes from the JSON file
+	jsonPath = Path(jsonPath)
+	if not jsonPath.exists():
+		return []
+
+	with jsonPath.open("r", encoding="utf-8") as file:
+		return json.load(file)
+
+
+def intersectionOverArea(ax, ay, aw, ah, bx, by, bw, bh): # Calculate the intersection area over the area of the first rectangle
+	left = max(ax, bx)
+	top = max(ay, by)
+	right = min(ax + aw, bx + bw)
+	bottom = min(ay + ah, by + bh)
+
+	if right <= left or bottom <= top:
+		return 0.0
+
+	interArea = (right - left) * (bottom - top)
+	aArea = max(1.0, aw * ah)
+	return interArea / aArea
+
+
+def shouldSkipTextBlock(textContent, minX, minY, textWidth, textHeight, shapes): # Determine if a text block should be skipped based on overlap with detected shapes
+	visibleChars = len("".join(textContent.split()))
+	if visibleChars == 0:
+		return True
+
+	for shape in shapes:
+		shapeType = shape.get("type", "")
+		sx = float(shape.get("x", 0))
+		sy = float(shape.get("y", 0))
+		sw = float(shape.get("width", 0))
+		sh = float(shape.get("height", 0))
+
+		if sw <= 0 or sh <= 0:
+			continue
+
+		overlapOnText = intersectionOverArea(minX, minY, textWidth, textHeight, sx, sy, sw, sh)
+		overlapOnShape = intersectionOverArea(sx, sy, sw, sh, minX, minY, textWidth, textHeight)
+
+		shapeArea = sw * sh
+		textArea = max(1.0, textWidth * textHeight)
+		areaRatio = shapeArea / textArea
+
+		if shapeType == "circle" and visibleChars == 1:
+			if overlapOnText > 0.60 and overlapOnShape > 0.35 and 0.70 <= areaRatio <= 1.80:
+				return True
+
+		if visibleChars <= 2 and overlapOnText > 0.75 and areaRatio < 2.20:
+			return True
+
+	return False
+
+
+def reconstructWordText(word): # Reconstruct the text of a word from its symbols
 	text = ""
 	for symbol in word.get("symbols", []):
 		text += symbol.get("text", "")
@@ -58,7 +114,7 @@ def reconstructBlockText(block):
 	return "\n".join(parts)
 
 
-def readTextBlocks(jsonPath):
+def readTextBlocks(jsonPath): # Read the detected text blocks from the JSON
 	with Path(jsonPath).open("r", encoding="utf-8") as file:
 		payload = json.load(file)
 
@@ -91,7 +147,7 @@ def calculateFontSize(textContent, textWidth, textHeight): # calculate font and 
 	
 
 
-def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken):
+def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken): # Main function to read detected text blocks from JSON and upload them to Miro board via API
 	jsonPath = Path(jsonPath)
 	if not jsonPath.exists():
 		print(f"Text JSON not found: {jsonPath}")
@@ -101,6 +157,8 @@ def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken):
 	if not blocks:
 		print("No text blocks found for upload.")
 		return
+
+	shapes = loadDetectedShapes()
 
 	headers = buildHeaders(apiToken)
 
@@ -116,6 +174,9 @@ def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken):
 		centerX = minX + textWidth / 2
 		centerY = minY + textHeight / 2
 		fontSize = calculateFontSize(textContent.split("\n")[0], textWidth, textHeight)
+
+		if shouldSkipTextBlock(textContent, minX, minY, textWidth, textHeight, shapes):
+			continue
 
 		payload = {
 			"data": {
@@ -137,7 +198,7 @@ def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken):
 
 		if response.ok:
 			preview = textContent.split("\n")[0][:40]
-			print(f"Uploaded text '{preview}' fontSize {fontSize}: {response.status_code}")
+			# print(f"Uploaded text '{preview}' fontSize {fontSize}: {response.status_code}")
 			continue
 
 		preview = textContent.split("\n")[0][:40]

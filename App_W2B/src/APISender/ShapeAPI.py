@@ -15,7 +15,7 @@ shapeTypeMap = {
 }
 
 
-def buildHeaders(apiToken):
+def buildHeaders(apiToken): # Helper function to build the headers for API
 	return {
 		"accept": "application/json",
 		"content-type": "application/json",
@@ -23,7 +23,7 @@ def buildHeaders(apiToken):
 	}
 
 
-def getShapeCenter(shape):
+def getShapeCenter(shape): # Helper function to calculate the center coordinates
 	width = shape.get("width", defaultShapeSize)
 	height = shape.get("height", defaultShapeSize)
 	centerX = shape.get("x", 0) + width / 2
@@ -31,7 +31,7 @@ def getShapeCenter(shape):
 	return centerX, centerY, width, height
 
 
-def uploadShapes(jsonPath=shapesJsonPath, apiToken=miroApiToken):
+def uploadShapes(jsonPath=shapesJsonPath, apiToken=miroApiToken): # Main function to read detected shapes from JSON and upload them to Miro board via API
 	jsonPath = Path(jsonPath)
 	if not jsonPath.exists():
 		print(f"Shapes JSON not found: {jsonPath}")
