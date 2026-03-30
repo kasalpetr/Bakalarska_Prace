@@ -37,23 +37,26 @@ std::vector<Shape> Detector::detectShapes(cv::Mat &image) // Main function to pr
     std::vector<TextRegion> textRegions = loadTextRegions("json/detectedText.json");
     allDetected = filterShapesAgainstText(allDetected, textRegions); 
 
-    drawDetectedShapes(image, allDetected); // Draw the detected shapes on the original image for visualization
+    for (size_t index = 0; index < allDetected.size(); ++index)
+    {
+        allDetected[index].id = static_cast<int>(index);
+    }
+
+    // drawDetectedShapes(image, allDetected); // Draw the detected shapes on the original image for visualization
 
     return allDetected;
 }
 
-std::vector<Edge> Detector::detectEdges(cv::Mat &image)
+std::vector<Edge> Detector::detectEdges(cv::Mat &image, const std::vector<Shape> &shapes)
 {
-    
-    
-    return std::vector<Edge>();
+    return edgeDetector.detectEdges(image, shapes);
 }
 
 cv::Mat Detector::preprocessImage(cv::Mat &image)
 {
-    cv::Mat gray, blurred, binary;
-    cv::cvtColor(image, gray, cv::COLOR_BGR2GRAY);
-    cv::GaussianBlur(gray, blurred, cv::Size(5, 5), 0);
+    cv::Mat grayImage, blurred, binary;
+    cv::cvtColor(image, grayImage, cv::COLOR_BGR2GRAY);
+    cv::GaussianBlur(grayImage, blurred, cv::Size(5, 5), 0);
     cv::adaptiveThreshold(blurred, binary, 255,
                           cv::ADAPTIVE_THRESH_GAUSSIAN_C,
                           cv::THRESH_BINARY_INV, 13, 2);
@@ -275,7 +278,7 @@ bool Detector::isShapeWronglyDetected(const Shape &shape, const std::vector<Text
                 }
             }
         }
-        // Heuristic rules to determine if the shape should be rejected based on its overlap with text regions and other factors
+        // rules for determining if a shape is likely a false positive due to text overlap
         bool likelyGlyphConflict = (shape.type == "circle") && (visibleChars == 1) &&
                                    overlapOnShape > 0.55 && overlapOnText > 0.55 &&
                                    nearSameCenter && similarScale && regionLooksLikeTextLine;

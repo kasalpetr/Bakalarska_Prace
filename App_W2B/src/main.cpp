@@ -44,14 +44,14 @@ int main(int argc, char *argv[])
 
     cv::Mat mask = ImageMask::createMask(image); // Create a mask from the image
 
-    edges = detector.detectEdges(mask); // Detect edges in the image and get their information as a vector of Edge objects
+    edges = detector.detectEdges(mask, shapes); // Detect edges and bind them directly to detected shapes by internal IDs
     JsonExporter::saveEdges(edges, (appRoot / "json" / "detectedEdges.json").string());
     std::cout << "Detected " << edges.size() << " edges." << std::endl;
 
     system((std::string("python3 \"") + (appRoot / "src" / "APISender" / "Main.py").string() + "\"").c_str()); // Call the Python script to upload JSON data to API");
 
-    cv::imshow("Loaded Image", image); // Display the loaded image
-    // cv::imshow("Mask", mask); // Display the created mask
+    // cv::imshow("Loaded Image", image); // Display the loaded image
+    cv::imshow("Mask", mask); // Display the created mask
     
     cv::waitKey(0);
     return 0;

@@ -3,11 +3,13 @@
 #include <memory>
 #include <string>
 #include "ShapeAndEdges.hpp"
+#include "ShapeDetector/EdgeDetector.hpp"
 #include "ShapeDetector/ShapeDetector.hpp"
 
 class Detector {
 private:
-    cv::Mat postProcessImage; // preprocessed image for shape detection
+    cv::Mat postProcessImage; // preprocessed binary image for shape detection
+    EdgeDetector edgeDetector; 
     struct TextRegion
     {
         cv::Rect rect;
@@ -25,5 +27,5 @@ private:
 public:
     Detector(cv::Mat& image);
     std::vector<Shape> detectShapes(cv::Mat& image);
-    std::vector<Edge> detectEdges(cv::Mat& image);
+    std::vector<Edge> detectEdges(cv::Mat& image, const std::vector<Shape> &shapes);
 };

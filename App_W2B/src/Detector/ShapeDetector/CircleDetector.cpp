@@ -76,7 +76,15 @@ std::vector<Shape> CircleDetector::detect(const cv::Mat &processedImage, const c
             continue;
 
         cv::Scalar avgBgr = getContourColor(contours[i], originalImage);
-        found.push_back({"circle", rect.x, rect.y, rect.width, rect.height, avgBgr, 0.0f});
+        Shape shape;
+        shape.type = "circle";
+        shape.x = rect.x;
+        shape.y = rect.y;
+        shape.width = rect.width;
+        shape.height = rect.height;
+        shape.color = avgBgr;
+        shape.angle = 0.0f;
+        found.push_back(shape);
         acceptedRects.push_back(rect);
     }
 

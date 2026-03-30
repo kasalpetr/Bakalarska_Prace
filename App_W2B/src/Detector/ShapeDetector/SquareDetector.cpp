@@ -208,8 +208,16 @@ std::vector<Shape> SquareDetector::detect(const cv::Mat &processedImage, const c
                 cv::Scalar avgBgr = this->getContourColor(approx, originalImage);
 
                 std::string shapeType = this->isInnerSameCollor(approx, originalImage) ? "sticky_note" : "rectangle";
-                found.push_back({shapeType, rect.x, rect.y, rect.width, rect.height, avgBgr, angle});
-                acceptedRects.push_back(rect);
+                Shape shape;
+                shape.type = shapeType;
+                shape.x = rect.x;
+                shape.y = rect.y;
+                shape.width = rect.width;
+                shape.height = rect.height;
+                shape.color = avgBgr;
+                shape.angle = angle;
+                found.push_back(shape);
+                acceptedRects.push_back(rect); 
             }
         }
     }

@@ -3,6 +3,12 @@ project(DigitalBoard)
 
 set(CMAKE_CXX_STANDARD 17)
 
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+endif()
+
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -march=native -DNDEBUG")
+
 find_package(OpenCV REQUIRED)
 find_package(nlohmann_json REQUIRED)
 
@@ -14,6 +20,7 @@ add_executable(DigitalBoard
     src/ImageWork/ImageLoader.cpp
     src/ImageWork/ImageMask.cpp
     src/Detector/Detector.cpp
+    src/Detector/ShapeDetector/EdgeDetector.cpp
     src/Detector/GeometryUtils.cpp
     src/JsonExport/JsonExporter.cpp
     src/Detector/ShapeDetector/ShapeDetector.hpp

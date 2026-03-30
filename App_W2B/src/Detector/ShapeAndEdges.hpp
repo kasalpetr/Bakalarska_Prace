@@ -6,6 +6,7 @@
 using json = nlohmann::json;
 
 struct Shape { //basic structure to hold detected shape information
+    int id = -1;
     std::string type;
     int x, y, width, height;
     cv::Scalar color; // BGR color format
@@ -13,6 +14,7 @@ struct Shape { //basic structure to hold detected shape information
 
     json to_json_object() const { // Convert the Shape object to a JSON object
         return json{
+            {"id", id},
             {"type", type},
             {"x", x},
             {"y", y},
@@ -35,6 +37,8 @@ struct Shape { //basic structure to hold detected shape information
 };
 
 struct Edge { //basic structure to hold detected edge information
+    int sourceShapeId = -1;
+    int targetShapeId = -1;
     cv::Point start;
     cv::Point end;
     float angle;
@@ -42,6 +46,8 @@ struct Edge { //basic structure to hold detected edge information
 
     json to_json_object() const { // Convert the Edge object to a JSON object
         return json{
+            {"sourceShapeId", sourceShapeId},
+            {"targetShapeId", targetShapeId},
             {"start", {{"x", start.x}, {"y", start.y}}},
             {"end", {{"x", end.x}, {"y", end.y}}},
             {"angle", angle},

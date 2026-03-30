@@ -31,6 +31,11 @@ def getShapeCenter(shape): # Helper function to calculate the center coordinates
 	return centerX, centerY, width, height
 
 
+def saveShapes(jsonPath, shapes):
+	with Path(jsonPath).open("w", encoding="utf-8") as file:
+		json.dump(shapes, file, ensure_ascii=False, indent=2)
+
+
 def uploadShapes(jsonPath=shapesJsonPath, apiToken=miroApiToken): # Main function to read detected shapes from JSON and upload them to Miro board via API
 	jsonPath = Path(jsonPath)
 	if not jsonPath.exists():
@@ -43,6 +48,7 @@ def uploadShapes(jsonPath=shapesJsonPath, apiToken=miroApiToken): # Main functio
 	headers = buildHeaders(apiToken)
 
 	for shape in shapes:
+		shape.pop("miroId", None)
 		centerX, centerY, width, height = getShapeCenter(shape)
 		miroShapeType = shapeTypeMap.get(shape.get("type", "rectangle"), "rectangle")
 
@@ -73,13 +79,26 @@ def uploadShapes(jsonPath=shapesJsonPath, apiToken=miroApiToken): # Main functio
 		response = requests.post(shapesUrl, json=payload, headers=headers, timeout=30)
 
 		if response.ok:
-			print(f"Uploaded shape {miroShapeType}: {response.status_code}")
+			try:
+				responsePayload = response.json()
+			except ValueError:
+				responsePayload = {}
+
+			miroId = responsePayload.get("id")
+			if miroId:
+				shape["miroId"] = miroId
+			print(
+				f"Uploaded shape {miroShapeType}: {response.status_code}, "
+				f"miroId={miroId}"
+			)
 			continue
 
 		print(
 			f"Failed to upload shape {miroShapeType}: "
 			f"{response.status_code} {response.text}"
 		)
+
+	saveShapes(jsonPath, shapes)
 
 
 if __name__ == "__main__":

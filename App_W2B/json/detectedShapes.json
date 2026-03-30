@@ -1,7 +1,52 @@
 [
-  {"colorHex":"#00FF00","height":86,"type":"rectangle","width":116,"x":218,"y":671},
-  {"colorHex":"#00FF00","height":107,"type":"rectangle","width":108,"x":303,"y":499},
-  {"colorHex":"#00FF00","height":96,"type":"rectangle","width":128,"x":65,"y":492},
-  {"colorHex":"#00FF00","height":124,"type":"rectangle","width":168,"x":20,"y":266},
-  {"colorHex":"#00FF00","height":142,"type":"rectangle","width":157,"x":307,"y":252}
+  {
+    "colorHex": "#00FF00",
+    "height": 86,
+    "id": 0,
+    "type": "rectangle",
+    "width": 116,
+    "x": 218,
+    "y": 671,
+    "miroId": "3458764665845119905"
+  },
+  {
+    "colorHex": "#00FF00",
+    "height": 107,
+    "id": 1,
+    "type": "rectangle",
+    "width": 108,
+    "x": 303,
+    "y": 499,
+    "miroId": "3458764665845119908"
+  },
+  {
+    "colorHex": "#00FF00",
+    "height": 96,
+    "id": 2,
+    "type": "rectangle",
+    "width": 128,
+    "x": 65,
+    "y": 492,
+    "miroId": "3458764665845119912"
+  },
+  {
+    "colorHex": "#00FF00",
+    "height": 124,
+    "id": 3,
+    "type": "rectangle",
+    "width": 168,
+    "x": 20,
+    "y": 266,
+    "miroId": "3458764665845119924"
+  },
+  {
+    "colorHex": "#00FF00",
+    "height": 142,
+    "id": 4,
+    "type": "rectangle",
+    "width": 157,
+    "x": 307,
+    "y": 252,
+    "miroId": "3458764665845119927"
+  }
 ]

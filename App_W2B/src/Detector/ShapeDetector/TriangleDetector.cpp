@@ -97,7 +97,15 @@ std::vector<Shape> TriangleDetector::detect(const cv::Mat &processedImage, const
         float angle = this->getContourAngle(approx);
         cv::Scalar avgBgr = this->getContourColor(approx, originalImage);
 
-        found.push_back({"triangle", rect.x, rect.y, rect.width, rect.height, avgBgr, angle});
+        Shape shape;
+        shape.type = "triangle";
+        shape.x = rect.x;
+        shape.y = rect.y;
+        shape.width = rect.width;
+        shape.height = rect.height;
+        shape.color = avgBgr;
+        shape.angle = angle;
+        found.push_back(shape);
         acceptedRects.push_back(rect);
     }
     return found;
