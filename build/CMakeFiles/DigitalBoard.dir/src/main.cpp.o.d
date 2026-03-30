@@ -351,7 +351,7 @@ CMakeFiles/DigitalBoard.dir/src/Main.cpp.o: \
  /usr/include/c++/11/bits/fs_dir.h /usr/include/c++/11/bits/fs_ops.h \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageLoader.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Detector.hpp \
- /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp \
+ /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
  /usr/include/nlohmann/json.hpp /usr/include/c++/11/iterator \
  /usr/include/c++/11/bits/stream_iterator.h /usr/include/c++/11/numeric \
  /usr/include/c++/11/bits/stl_numeric.h \
@@ -408,7 +408,7 @@ CMakeFiles/DigitalBoard.dir/src/Main.cpp.o: \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/ShapeDetector.hpp \
- /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/../Shape.hpp \
+ /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/../ShapeAndEdges.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExporter.hpp \
- /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/../Detector/Shape.hpp \
+ /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/../Detector/ShapeAndEdges.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageMask.hpp

@@ -414,7 +414,7 @@ CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o: /mnt/c/FIT\ CVUT/bakala
   /usr/include/opencv4/opencv2/video.hpp \
   /usr/include/opencv4/opencv2/video/tracking.hpp \
   /usr/include/opencv4/opencv2/video/background_segm.hpp \
-  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
   /usr/include/nlohmann/json.hpp \
   /usr/include/c++/11/iterator \
   /usr/include/c++/11/bits/stream_iterator.h \
@@ -482,7 +482,7 @@ CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o: /mnt/c/FIT\ CVUT/bakala
   /usr/include/nlohmann/detail/macro_unscope.hpp \
   /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/ShapeDetector.hpp \
-  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/GeometryUtils.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/SquareDetector.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/ShapeDetector.hpp \
@@ -1321,7 +1321,7 @@ CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o: /mn
   /usr/include/opencv4/opencv2/video.hpp \
   /usr/include/opencv4/opencv2/video/tracking.hpp \
   /usr/include/opencv4/opencv2/video/background_segm.hpp \
-  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
   /usr/include/nlohmann/json.hpp \
   /usr/include/c++/11/iterator \
   /usr/include/c++/11/bits/stream_iterator.h \
@@ -1804,7 +1804,7 @@ CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o: /mn
   /usr/include/opencv4/opencv2/video.hpp \
   /usr/include/opencv4/opencv2/video/tracking.hpp \
   /usr/include/opencv4/opencv2/video/background_segm.hpp \
-  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
   /usr/include/nlohmann/json.hpp \
   /usr/include/c++/11/iterator \
   /usr/include/c++/11/bits/stream_iterator.h \
@@ -2287,7 +2287,7 @@ CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o: /
   /usr/include/opencv4/opencv2/video.hpp \
   /usr/include/opencv4/opencv2/video/tracking.hpp \
   /usr/include/opencv4/opencv2/video/background_segm.hpp \
-  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
   /usr/include/nlohmann/json.hpp \
   /usr/include/c++/11/iterator \
   /usr/include/c++/11/bits/stream_iterator.h \
@@ -3411,7 +3411,7 @@ CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExporter.cpp.o: /mnt/c/FIT\ CVUT/
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/include/c++/11/bits/charconv.h \
   /usr/include/c++/11/bits/basic_string.tcc \
-  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
   /usr/include/nlohmann/json.hpp \
   /usr/include/c++/11/algorithm \
   /usr/include/c++/11/utility \
@@ -4159,7 +4159,7 @@ CMakeFiles/DigitalBoard.dir/src/Main.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarsk
   /usr/include/c++/11/bits/fs_ops.h \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageLoader.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Detector.hpp \
-  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
   /usr/include/nlohmann/json.hpp \
   /usr/include/c++/11/iterator \
   /usr/include/c++/11/bits/stream_iterator.h \
@@ -4221,9 +4221,9 @@ CMakeFiles/DigitalBoard.dir/src/Main.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarsk
   /usr/include/nlohmann/detail/macro_unscope.hpp \
   /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/ShapeDetector.hpp \
-  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExporter.hpp \
-  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageMask.hpp
 
 
@@ -4731,6 +4731,8 @@ CMakeFiles/DigitalBoard.dir/src/Main.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarsk
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
+/mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp:
+
 /usr/include/c++/11/istream:
 
 /usr/include/c++/11/bits/stl_algo.h:
@@ -4997,6 +4999,12 @@ CMakeFiles/DigitalBoard.dir/src/Main.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarsk
 
 /usr/include/c++/11/sstream:
 
+/usr/include/c++/11/bits/forward_list.tcc:
+
+/usr/include/c++/11/bits/exception.h:
+
+/usr/include/c++/11/bits/ios_base.h:
+
 /usr/include/c++/11/bits/atomic_lockfree_defines.h:
 
 /usr/include/c++/11/bits/locale_classes.h:
@@ -5006,14 +5014,6 @@ CMakeFiles/DigitalBoard.dir/src/Main.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarsk
 /usr/include/c++/11/bits/locale_classes.tcc:
 
 /usr/include/c++/11/system_error:
-
-/usr/include/c++/11/bits/forward_list.tcc:
-
-/usr/include/c++/11/bits/exception.h:
-
-/usr/include/c++/11/bits/ios_base.h:
-
-/mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Shape.hpp:
 
 /usr/include/c++/11/bits/basic_ios.h:
 

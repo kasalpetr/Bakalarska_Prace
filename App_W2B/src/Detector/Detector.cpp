@@ -9,30 +9,22 @@
 #include <fstream>
 #include <nlohmann/json.hpp>
 
-Detector::Detector()
+Detector::Detector(cv::Mat &image)
 {
     shapeDetectors.push_back(std::make_unique<SquareDetector>()); // add more detectors here as needed
     shapeDetectors.push_back(std::make_unique<TriangleDetector>());
     shapeDetectors.push_back(std::make_unique<CircleDetector>());
+
+    this->postProcessImage = preprocessImage(image);
 }
 
-std::vector<Shape> Detector::processImage(cv::Mat &image) // Main function to process the image and detect shapes, returning a vector of detected Shape objects
+std::vector<Shape> Detector::detectShapes(cv::Mat &image) // Main function to process the image and detect shapes, returning a vector of detected Shape objects
 {
-    cv::Mat gray, blurred, binary; // preprocess the image for better shape detection
-    cv::cvtColor(image, gray, cv::COLOR_BGR2GRAY);
-    cv::GaussianBlur(gray, blurred, cv::Size(5, 5), 0);
-    cv::adaptiveThreshold(blurred, binary, 255,
-                          cv::ADAPTIVE_THRESH_GAUSSIAN_C,
-                          cv::THRESH_BINARY_INV, 13, 2);
-
-    cv::Mat closeKernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(5, 5));
-    cv::morphologyEx(binary, binary, cv::MORPH_CLOSE, closeKernel);
-
     std::vector<Shape> allDetected; // aggregate results from all detectors
 
     for (auto &algo : shapeDetectors) // detect shapes using all algorithms and aggregate results
     {
-        auto shapes = algo->detect(binary, image); // pass both processed and original image for better detection (e.g., color info)
+        auto shapes = algo->detect(this->postProcessImage, image); // pass both processed and original image for better detection (e.g., color info)
         for (const auto &shape : shapes)
         {
             if (!isFalsePositiveCircle(shape, allDetected))
@@ -48,6 +40,27 @@ std::vector<Shape> Detector::processImage(cv::Mat &image) // Main function to pr
     drawDetectedShapes(image, allDetected); // Draw the detected shapes on the original image for visualization
 
     return allDetected;
+}
+
+std::vector<Edge> Detector::detectEdges(cv::Mat &image)
+{
+    
+    
+    return std::vector<Edge>();
+}
+
+cv::Mat Detector::preprocessImage(cv::Mat &image)
+{
+    cv::Mat gray, blurred, binary;
+    cv::cvtColor(image, gray, cv::COLOR_BGR2GRAY);
+    cv::GaussianBlur(gray, blurred, cv::Size(5, 5), 0);
+    cv::adaptiveThreshold(blurred, binary, 255,
+                          cv::ADAPTIVE_THRESH_GAUSSIAN_C,
+                          cv::THRESH_BINARY_INV, 13, 2);
+
+    cv::Mat closeKernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(5, 5));
+    cv::morphologyEx(binary, binary, cv::MORPH_CLOSE, closeKernel);
+    return binary;
 }
 
 void Detector::drawDetectedShapes(cv::Mat &image, const std::vector<Shape> &shapes) const // Draw the detected shapes on the image for visualization

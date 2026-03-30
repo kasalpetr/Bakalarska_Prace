@@ -2,7 +2,7 @@
 #define SHAPEDETECTOR_HPP
 #include <opencv2/opencv.hpp>
 #include <vector>
-#include "../Shape.hpp"
+#include "../ShapeAndEdges.hpp"
 
 class ShapeDetector
 { // virtual methods for different shape detection algorithms

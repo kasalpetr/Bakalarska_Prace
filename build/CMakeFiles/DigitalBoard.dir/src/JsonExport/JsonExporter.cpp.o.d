@@ -133,7 +133,7 @@ CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExporter.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc \
- /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/../Detector/Shape.hpp \
+ /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/../Detector/ShapeAndEdges.hpp \
  /usr/include/nlohmann/json.hpp /usr/include/c++/11/algorithm \
  /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
  /usr/include/c++/11/bits/stl_algo.h \

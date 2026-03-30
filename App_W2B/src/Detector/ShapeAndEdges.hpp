@@ -1,5 +1,5 @@
-#ifndef SHAPE_HPP 
-#define SHAPE_HPP
+#ifndef SHAPEAND_EDGES_HPP
+#define SHAPEAND_EDGES_HPP 
 #include <nlohmann/json.hpp>
 #include <opencv2/opencv.hpp>
 
@@ -32,7 +32,25 @@ struct Shape { //basic structure to hold detected shape information
         snprintf(hexColor, sizeof(hexColor), "#%02X%02X%02X", (int)color[2], (int)color[1], (int)color[0]);
         return std::string(hexColor);
     }
-
-
 };
-#endif // SHAPE_HPP
+
+struct Edge { //basic structure to hold detected edge information
+    cv::Point start;
+    cv::Point end;
+    float angle;
+    double length;
+
+    json to_json_object() const { // Convert the Edge object to a JSON object
+        return json{
+            {"start", {{"x", start.x}, {"y", start.y}}},
+            {"end", {{"x", end.x}, {"y", end.y}}},
+            {"angle", angle},
+            {"length", length}
+        };
+    }
+
+    std::string toJson() const {
+        return to_json_object().dump(); 
+    }
+};
+#endif // SHAPEAND_EDGES_HPP
