@@ -1,6 +1,22 @@
 #include "ImageLoader.hpp"
+#include <fstream>
 
-cv::Mat ImageLoader::loadImage(const std::string &path)
+void ImageLoader::saveImageSize(const cv::Mat& img, const std::string& imageSizeJsonPath)
+{
+    if (imageSizeJsonPath.empty()) {
+        return;
+    }
+
+    std::ofstream out(imageSizeJsonPath);
+    if (!out.is_open()) {
+        std::cerr << "Failed to write image size to " << imageSizeJsonPath << std::endl;
+        return;
+    }
+
+    out << "{\"width\": " << img.cols << ", \"height\": " << img.rows << "}";
+}
+
+cv::Mat ImageLoader::loadImage(const std::string &path, const std::string& imageSizeJsonPath)
 { // Load the image using OpenCV
     cv::Mat img = cv::imread(path);
 
@@ -23,10 +39,14 @@ cv::Mat ImageLoader::loadImage(const std::string &path)
         
         std::cout << "Image resized from " << img.cols << "x" << img.rows 
                   << " to " << new_width << "x" << new_height << std::endl;
+
+        saveImageSize(resizedImg, imageSizeJsonPath);
         
         return resizedImg;
     }
 
+    saveImageSize(img, imageSizeJsonPath);
+    
     return img;
 }
 

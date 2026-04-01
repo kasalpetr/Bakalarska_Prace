@@ -11,11 +11,10 @@
 #define APP_W2B_ROOT "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B"
 #endif
 
-
 int main(int argc, char *argv[])
 {
     const std::filesystem::path appRoot(APP_W2B_ROOT);
-  
+
     try
     {
         std::filesystem::current_path(appRoot);
@@ -26,18 +25,18 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "GraphText.jpg").string()); // Load the image
-    Detector detector(image); // Create a Detector object with the loaded image
+    cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "PCText.png").string(), (appRoot / "json" / "imageSize.json").string()); // Load the image
+    Detector detector(image);                            // Create a Detector object with the loaded image
     std::vector<Shape> shapes;
-    std::vector<Edge> edges;  
+    std::vector<Edge> edges;
 
-    //call Google Vision API for text detection and save the result to JSON file
+    // call Google Vision API for text detection and save the result to JSON file
     std::string tmpPath = (appRoot / "Img" / "TmpGoogleVision.png").string(); // Temporary path for the image to be processed by Google Vision API
     cv::imwrite(tmpPath, image);
     std::string PythonText = "python3 \"" + (appRoot / "src" / "APISender" / "GoogleVision.py").string() + "\" \"" + tmpPath + "\"";
     system(PythonText.c_str());
     std::filesystem::remove(tmpPath); // Clean up the temporary file after processing
-    
+
     shapes = detector.detectShapes(image); // Detect shapes in the image and get their information as a vector of Shape objects
     JsonExporter::saveShapes(shapes, (appRoot / "json" / "detectedShapes.json").string());
     std::cout << "Detected " << shapes.size() << " shapes." << std::endl;
@@ -52,7 +51,7 @@ int main(int argc, char *argv[])
 
     // cv::imshow("Loaded Image", image); // Display the loaded image
     cv::imshow("Mask", mask); // Display the created mask
-    
+
     cv::waitKey(0);
     return 0;
 }

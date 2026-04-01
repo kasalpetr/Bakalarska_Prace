@@ -1,12 +1,14 @@
 from ConnectorAPI import uploadConnectors
+from FrameAPI import uploadFrame
 from ShapeAPI import uploadShapes
 from TextAPI import uploadTexts
 
 
 def main():
-    uploadShapes() 
+    frameId, frameTopLeftX, frameTopLeftY = uploadFrame()
+    uploadShapes(frameId=frameId, frameOffsetX=frameTopLeftX, frameOffsetY=frameTopLeftY)
     uploadConnectors()
-    uploadTexts()
+    uploadTexts(frameId=frameId, frameOffsetX=frameTopLeftX, frameOffsetY=frameTopLeftY)
 
 
 if __name__ == "__main__":

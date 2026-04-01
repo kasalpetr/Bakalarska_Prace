@@ -147,7 +147,7 @@ def calculateFontSize(textContent, textWidth, textHeight): # calculate font and 
 	
 
 
-def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken): # Main function to read detected text blocks from JSON and upload them to Miro board via API
+def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken, frameId=None, frameOffsetX=0.0, frameOffsetY=0.0): # Main function to read detected text blocks from JSON and upload them to Miro board via API
 	jsonPath = Path(jsonPath)
 	if not jsonPath.exists():
 		print(f"Text JSON not found: {jsonPath}")
@@ -173,6 +173,9 @@ def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken): # Main function t
 		textHeight = max(1, maxY - minY)
 		centerX = minX + textWidth / 2
 		centerY = minY + textHeight / 2
+		if frameId:
+			centerX -= frameOffsetX
+			centerY -= frameOffsetY
 		fontSize = calculateFontSize(textContent.split("\n")[0], textWidth, textHeight)
 
 		if shouldSkipTextBlock(textContent, minX, minY, textWidth, textHeight, shapes):
@@ -192,13 +195,13 @@ def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken): # Main function t
 			"geometry": {
 				"width": textWidth,
 			},
+			**({"parent": {"id": frameId}} if frameId else {}),
 		}
 
 		response = requests.post(textsUrl, json=payload, headers=headers, timeout=30)
 
 		if response.ok:
 			preview = textContent.split("\n")[0][:40]
-			# print(f"Uploaded text '{preview}' fontSize {fontSize}: {response.status_code}")
 			continue
 
 		preview = textContent.split("\n")[0][:40]

@@ -207,7 +207,7 @@ std::vector<Shape> SquareDetector::detect(const cv::Mat &processedImage, const c
                 float angle = this->getContourAngle(approx);
                 cv::Scalar avgBgr = this->getContourColor(approx, originalImage);
 
-                std::string shapeType = this->isInnerSameCollor(approx, originalImage) ? "sticky_note" : "rectangle";
+                std::string shapeType = this->isInnerSameCollor(approx, originalImage) ? "stickyNote" : "rectangle";
                 Shape shape;
                 shape.type = shapeType;
                 shape.x = rect.x;
