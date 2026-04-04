@@ -20,7 +20,7 @@ std::vector<Edge> EdgeDetector::detectEdges(cv::Mat &image, const std::vector<Sh
     cv::connectedComponents(maskedRegions, edgeLabels, 8, CV_32S);
 
     std::vector<cv::Vec4i> rawLines;
-    cv::HoughLinesP(lineCandidates, rawLines, 1, CV_PI / 180, 25, 45, 35);
+    cv::HoughLinesP(lineCandidates, rawLines, 1, CV_PI / 180, 25, 45, 20);
 
     std::vector<Edge> acceptedEdges;
     for (const auto &line : rawLines)
@@ -132,7 +132,7 @@ int EdgeDetector::getNearbyMaskLabel(const cv::Mat &edgeLabels, const cv::Point 
 
 int EdgeDetector::findClosestShapeId(const cv::Point &point, const std::vector<Shape> &shapes, int excludedShapeId) const // function finds the closest shape ID to a given point, excluding a specific shape ID
 {
-    constexpr double maxDistance = 80.0;
+    constexpr double maxDistance = 60.0;
 
     int closestShapeId = -1;
     double bestDistance = maxDistance;

@@ -61,9 +61,22 @@ def intersectionOverArea(ax, ay, aw, ah, bx, by, bw, bh): # Calculate the inters
 	return interArea / aArea
 
 
+def isRepeatedGlyphArtifact(textContent):
+	lettersOnly = "".join(ch for ch in textContent if ch.isalpha())
+	if len(lettersOnly) < 3:
+		return False
+
+	upper = lettersOnly.upper()
+	return len(set(upper)) == 1
+
+
 def shouldSkipTextBlock(textContent, minX, minY, textWidth, textHeight, shapes): # Determine if a text block should be skipped based on overlap with detected shapes
 	visibleChars = len("".join(textContent.split()))
 	if visibleChars == 0:
+		return True
+
+	isRepeatedGlyphArtifactText = isRepeatedGlyphArtifact(textContent)
+	if isRepeatedGlyphArtifactText:
 		return True
 
 	for shape in shapes:
@@ -85,6 +98,10 @@ def shouldSkipTextBlock(textContent, minX, minY, textWidth, textHeight, shapes):
 
 		if shapeType == "circle" and visibleChars == 1:
 			if overlapOnText > 0.60 and overlapOnShape > 0.35 and 0.70 <= areaRatio <= 1.80:
+				return True
+
+		if isRepeatedGlyphArtifactText and shapeType in ("rectangle", "sticky_note"):
+			if overlapOnText > 0.45 and overlapOnShape > 0.25:
 				return True
 
 		if visibleChars <= 2 and overlapOnText > 0.75 and areaRatio < 2.20:

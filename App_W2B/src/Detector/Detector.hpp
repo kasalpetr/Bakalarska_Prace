@@ -20,6 +20,7 @@ private:
     cv::Mat preprocessImage(cv::Mat &image);
     bool isFalsePositiveCircle(const Shape &candidate, const std::vector<Shape> &acceptedShapes) const;
     std::vector<TextRegion> loadTextRegions(const std::string &filePath) const;
+    bool isLikelyRepeatedGlyphArtifact(const std::string &text) const;
     bool isShapeWronglyDetected(const Shape &shape, const std::vector<TextRegion> &textRegions) const;
     std::vector<Shape> filterShapesAgainstText(const std::vector<Shape> &shapes, const std::vector<TextRegion> &textRegions) const;
     void drawDetectedShapes(cv::Mat &image, const std::vector<Shape> &shapes) const;

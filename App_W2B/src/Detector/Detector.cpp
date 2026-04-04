@@ -24,6 +24,8 @@ std::vector<Shape> Detector::detectShapes(cv::Mat &image) // Main function to pr
 
     for (auto &algo : shapeDetectors) // detect shapes using all algorithms and aggregate results
     {
+        cv::Mat debug = postProcessImage.clone();
+
         auto shapes = algo->detect(this->postProcessImage, image); // pass both processed and original image for better detection (e.g., color info)
         for (const auto &shape : shapes)
         {
@@ -35,7 +37,7 @@ std::vector<Shape> Detector::detectShapes(cv::Mat &image) // Main function to pr
     }
 
     std::vector<TextRegion> textRegions = loadTextRegions("json/detectedText.json");
-    allDetected = filterShapesAgainstText(allDetected, textRegions); 
+    allDetected = filterShapesAgainstText(allDetected, textRegions); // Filter shapes against text regions to remove wrongly detected shapes overlapping with text
 
     for (size_t index = 0; index < allDetected.size(); ++index)
     {
@@ -225,6 +227,7 @@ bool Detector::isShapeWronglyDetected(const Shape &shape, const std::vector<Text
         {
             continue;
         }
+        
 
         double interArea = static_cast<double>(inter.area());
         double overlapOnShape = interArea / shapeArea;
@@ -248,7 +251,7 @@ bool Detector::isShapeWronglyDetected(const Shape &shape, const std::vector<Text
         bool regionLooksLikeTextLine = false;
         if (visibleChars == 1)
         {
-            for (const auto &other : textRegions)
+            for (const auto &other : textRegions) 
             {
                 if (&other == &region)
                 {
@@ -278,10 +281,24 @@ bool Detector::isShapeWronglyDetected(const Shape &shape, const std::vector<Text
                 }
             }
         }
+
+        // //if its all D in the text and shape is rectnagle its should stay, problably its rectale
+        // if (shape.type == "rectangle" && region.text.find_first_not_of("D ") == std::string::npos)
+        // {
+        //     continue;;
+        // }
+        
         // rules for determining if a shape is likely a false positive due to text overlap
         bool likelyGlyphConflict = (shape.type == "circle") && (visibleChars == 1) &&
                                    overlapOnShape > 0.55 && overlapOnText > 0.55 &&
                                    nearSameCenter && similarScale && regionLooksLikeTextLine;
+
+        bool repeatedGlyphArtifact = isLikelyRepeatedGlyphArtifact(region.text);
+        if ((shape.type == "rectangle" || shape.type == "sticky_note") && repeatedGlyphArtifact)
+        {
+            // Keep detected boxes when OCR confuses box outlines as repeated glyphs (e.g., DDDD).
+            continue;
+        }
 
         bool textDominatesShape = overlapOnShape > 0.75 && shapeToTextAreaRatio < 1.15;
         bool shapeMostlyInsideText = overlapOnText > 0.85 && shapeToTextAreaRatio < 1.30;
@@ -306,4 +323,42 @@ int Detector::countVisibleChars(const std::string &text) const // Count the visi
         }
     }
     return count;
+}
+
+bool Detector::isLikelyRepeatedGlyphArtifact(const std::string &text) const
+{
+    int visibleCount = 0;
+    unsigned char firstUpper = 0;
+    bool hasFirst = false;
+
+    for (char c : text)
+    {
+        unsigned char uc = static_cast<unsigned char>(c);
+
+        if (std::isspace(uc))
+        {
+            continue;
+        }
+
+        if (!std::isalpha(uc))
+        {
+            return false;
+        }
+
+        unsigned char currentUpper = static_cast<unsigned char>(std::toupper(uc));
+        if (!hasFirst)
+        {
+            firstUpper = currentUpper;
+            hasFirst = true;
+        }
+        else if (currentUpper != firstUpper)
+        {
+            // Stop immediately when we detect a second distinct character.
+            return false;
+        }
+
+        ++visibleCount;
+    }
+
+    return visibleCount >= 3;
 }
