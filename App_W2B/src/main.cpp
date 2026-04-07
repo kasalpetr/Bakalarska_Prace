@@ -25,8 +25,8 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "Table.jpg").string(), (appRoot / "json" / "imageSize.json").string()); // Load the image
-    cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "GraphText.jpg").string(), (appRoot / "json" / "imageSize.json").string()); // Load the image
+    cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "Table.jpg").string(), (appRoot / "json" / "imageSize.json").string()); // Load the image
+    // cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "GraphText.jpg").string(), (appRoot / "json" / "imageSize.json").string()); // Load the image
     // cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "TextShape.jpg").string(), (appRoot / "json" / "imageSize.json").string()); // Load the image
 
     Detector detector(image);                            // Create a Detector object with the loaded image
@@ -44,7 +44,9 @@ int main(int argc, char *argv[])
     JsonExporter::saveShapes(shapes, (appRoot / "json" / "detectedShapes.json").string());
     std::cout << "Detected " << shapes.size() << " shapes." << std::endl;
 
-    cv::Mat mask = ImageMask::createMask(image); // Create a mask from the image
+    cv::Mat mask = ImageMask::createMask(image); // Create a mask from the image for edge detection
+    cv::Mat residual = ImageMask::createTransparentResidual(image, mask);
+    cv::imwrite((appRoot / "Img" / "residual.png").string(), residual);
 
     edges = detector.detectEdges(mask, shapes); // Detect edges and bind them directly to detected shapes by internal IDs
     JsonExporter::saveEdges(edges, (appRoot / "json" / "detectedEdges.json").string());

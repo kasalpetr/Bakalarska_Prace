@@ -6,12 +6,65 @@
 
 cv::Mat ImageMask::createMask(const cv::Mat &img) // Mask all shapes in the image and text, leaving only some images which are not detected as shapes or text
 {
-    cv::Mat mask = img.clone();                                                                                 // Create a copy of the input image to be used as a mask
+    cv::Mat mask = img.clone();                                        // Create a copy of the input image to be used as a mask
     std::string shapeJsonPath = "../App_W2B/json/detectedShapes.json"; // Path to the JSON file with detected shapes information
-    std::string textJsonPath = "../App_W2B/json/detectedText.json";     // Path to the JSON file with detected text information
-    mask = maskShape(mask, shapeJsonPath); // Mask detected shapes in the image using the JSON file with detected shapes information
-    mask = maskText(mask, textJsonPath);   // Mask detected text in the image using the JSON file with detected text information
+    std::string textJsonPath = "../App_W2B/json/detectedText.json";    // Path to the JSON file with detected text information
+    mask = maskShape(mask, shapeJsonPath);                             // Mask detected shapes in the image using the JSON file with detected shapes information
+    mask = maskText(mask, textJsonPath);                               // Mask detected text in the image using the JSON file with detected text information
     return mask;
+}
+
+cv::Mat ImageMask::createTransparentResidual(const cv::Mat &img, const cv::Mat &maskedImg)
+{
+    cv::Mat foregroundMask = extractForegroundMask(img);
+
+    cv::Mat residual;
+    cv::cvtColor(maskedImg, residual, cv::COLOR_BGR2BGRA);
+
+    cv::Mat maskedRegions;
+    cv::inRange(maskedImg, cv::Scalar(255, 255, 255), cv::Scalar(255, 255, 255), maskedRegions);
+
+    cv::Mat keepRegions;
+    cv::bitwise_not(maskedRegions, keepRegions);
+
+    cv::Mat alpha;
+    cv::bitwise_and(foregroundMask, keepRegions, alpha);
+
+    std::vector<cv::Mat> channels;
+    cv::split(residual, channels);
+    channels[3] = alpha;
+    cv::merge(channels, residual);
+
+    return residual;
+}
+
+cv::Mat ImageMask::extractForegroundMask(const cv::Mat &img)
+{
+    cv::Mat gray;
+    cv::cvtColor(img, gray, cv::COLOR_BGR2GRAY);
+
+    cv::Mat darkOnly = gray.clone();
+    for (int y = 0; y < darkOnly.rows; ++y)
+    {
+        unsigned char *ptr = darkOnly.ptr<unsigned char>(y);
+        for (int x = 0; x < darkOnly.cols; ++x)
+        {
+            if (ptr[x] > 200) // Threshold for light pixels, adjust as needed
+                ptr[x] = 255;
+        }
+    }
+
+    cv::Mat blurred;
+    cv::GaussianBlur(darkOnly, blurred, cv::Size(5, 5), 0);
+
+    cv::Mat thresholded;
+    cv::adaptiveThreshold(blurred, thresholded,255,cv::ADAPTIVE_THRESH_GAUSSIAN_C,cv::THRESH_BINARY_INV,35,12);
+
+    cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(2, 2));
+    cv::Mat cleaned;
+    cv::morphologyEx(thresholded, cleaned,cv::MORPH_OPEN,kernel,cv::Point(-1, -1),2); 
+
+    return cleaned;
 }
 
 cv::Mat ImageMask::maskShape(const cv::Mat &img, const std::string &filePath) // Mask shapes
@@ -40,7 +93,6 @@ cv::Mat ImageMask::maskShape(const cv::Mat &img, const std::string &filePath) //
         width = std::min(width, masked.cols - x);
         height = std::min(height, masked.rows - y);
 
-
         // Fill the detected shape or text area with white color to mask it
         cv::rectangle(masked, cv::Rect(x, y, width, height), cv::Scalar(255, 255, 255), cv::FILLED);
     }
@@ -48,7 +100,7 @@ cv::Mat ImageMask::maskShape(const cv::Mat &img, const std::string &filePath) //
     return masked;
 }
 
-cv::Mat ImageMask::maskText(const cv::Mat &img, const std::string &filePath) //Mask text
+cv::Mat ImageMask::maskText(const cv::Mat &img, const std::string &filePath) // Mask text
 {
     cv::Mat masked = img.clone();
 

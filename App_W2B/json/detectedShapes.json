@@ -1,52 +1,152 @@
 [
   {
-    "colorHex": "#00FF00",
-    "height": 86,
+    "colorHex": "#FF0000",
+    "height": 103,
     "id": 0,
     "type": "rectangle",
-    "width": 116,
-    "x": 218,
-    "y": 671,
-    "miroId": "3458764666769152561"
+    "width": 195,
+    "x": 864,
+    "y": 600,
+    "miroId": "3458764666806593986"
   },
   {
     "colorHex": "#00FF00",
-    "height": 107,
+    "height": 32,
     "id": 1,
     "type": "rectangle",
-    "width": 108,
-    "x": 303,
-    "y": 499,
-    "miroId": "3458764666769152580"
+    "width": 36,
+    "x": 866,
+    "y": 494,
+    "miroId": "3458764666806593992"
   },
   {
-    "colorHex": "#00FF00",
-    "height": 96,
+    "colorHex": "#FF0000",
+    "height": 95,
     "id": 2,
     "type": "rectangle",
-    "width": 128,
-    "x": 65,
-    "y": 492,
-    "miroId": "3458764666769152584"
+    "width": 72,
+    "x": 641,
+    "y": 262,
+    "miroId": "3458764666806593997"
   },
   {
-    "colorHex": "#00FF00",
-    "height": 124,
+    "colorHex": "#FF0000",
+    "height": 137,
     "id": 3,
     "type": "rectangle",
-    "width": 168,
-    "x": 20,
-    "y": 266,
-    "miroId": "3458764666769152588"
+    "width": 114,
+    "x": 1052,
+    "y": 259,
+    "miroId": "3458764666806594004"
+  },
+  {
+    "colorHex": "#FF0000",
+    "height": 110,
+    "id": 4,
+    "type": "rectangle",
+    "width": 104,
+    "x": 832,
+    "y": 258,
+    "miroId": "3458764666806594010"
+  },
+  {
+    "colorHex": "#FF0000",
+    "height": 106,
+    "id": 5,
+    "type": "rectangle",
+    "width": 88,
+    "x": 729,
+    "y": 257,
+    "miroId": "3458764666806594014"
+  },
+  {
+    "colorHex": "#FF0000",
+    "height": 134,
+    "id": 6,
+    "type": "rectangle",
+    "width": 121,
+    "x": 937,
+    "y": 247,
+    "miroId": "3458764666806594018"
   },
   {
     "colorHex": "#00FF00",
-    "height": 142,
-    "id": 4,
+    "height": 42,
+    "id": 7,
     "type": "rectangle",
-    "width": 157,
-    "x": 307,
-    "y": 252,
-    "miroId": "3458764666769152593"
+    "width": 44,
+    "x": 921,
+    "y": 156,
+    "miroId": "3458764666806594022"
+  },
+  {
+    "colorHex": "#00FF00",
+    "height": 35,
+    "id": 8,
+    "type": "rectangle",
+    "width": 45,
+    "x": 970,
+    "y": 154,
+    "miroId": "3458764666806594029"
+  },
+  {
+    "colorHex": "#FF0000",
+    "height": 36,
+    "id": 9,
+    "type": "triangle",
+    "width": 68,
+    "x": 515,
+    "y": 923,
+    "miroId": "3458764666806594032"
+  },
+  {
+    "colorHex": "#FF0000",
+    "height": 37,
+    "id": 10,
+    "type": "triangle",
+    "width": 71,
+    "x": 634,
+    "y": 925,
+    "miroId": "3458764666806594037"
+  },
+  {
+    "colorHex": "#FF0000",
+    "height": 28,
+    "id": 11,
+    "type": "triangle",
+    "width": 52,
+    "x": 1268,
+    "y": 873,
+    "miroId": "3458764666806594047"
+  },
+  {
+    "colorHex": "#00FF00",
+    "height": 26,
+    "id": 12,
+    "type": "circle",
+    "width": 26,
+    "x": 688,
+    "y": 511,
+    "miroId": "3458764666806594051"
+  },
+  {
+    "colorHex": "#00FF00",
+    "height": 23,
+    "id": 13,
+    "type": "circle",
+    "width": 23,
+    "x": 677,
+    "y": 497,
+    "miroId": "3458764666806594057"
+  },
+  {
+    "colorHex": "#00FF00",
+    "height": 24,
+    "id": 14,
+    "type": "circle",
+    "width": 24,
+    "x": 797,
+    "y": 101,
+    "miroId": "3458764666806594062"
   }
 ]
