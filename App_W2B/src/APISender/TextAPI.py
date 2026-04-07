@@ -9,13 +9,8 @@ from Config import shapesJsonPath
 
 textsUrl = f"https://api.miro.com/v2/boards/{miroBoardId}/texts"
 defaultTextWidth = 120
-minFontSize = 10
-FontSize2 = 18
-FontSize3 = 24
-FontSize4 = 36
-FontSize5 = 48
-FontSize6 = 60
-maxFontSize = 72
+minFontSize = 8
+maxFontSize = 32
 
 
 def buildHeaders(apiToken):
@@ -146,21 +141,26 @@ def readTextBlocks(jsonPath): # Read the detected text blocks from the JSON
 	return pages[0].get("blocks", [])
 
 
-def calculateFontSize(textContent, textWidth, textHeight): # calculate font and pick one of the predefined sizes
+def calculateFontSize(textContent, textWidth, textHeight): # Estimate font size from both text box geometry and text content
 	if textWidth <= 0 or textHeight <= 0:
 		return minFontSize
 
-	aspectRatio = textWidth / textHeight if textHeight > 0 else 1
-	if aspectRatio > 5:
-		return FontSize2
-	elif aspectRatio > 3:
-		return FontSize3
-	elif aspectRatio > 1.5:
-		return FontSize4
-	elif aspectRatio > 1:
-		return FontSize5
-	else:
-		return FontSize6
+	lines = [line.strip() for line in textContent.split("\n") if line.strip()]
+	if not lines:
+		return minFontSize
+
+	lineCount = len(lines)
+	longestLineChars = max(len(line) for line in lines)
+	longestLineChars = max(1, longestLineChars)
+
+	# Height-limited estimate: leave room for line spacing.
+	heightBased = textHeight / (lineCount * 1.35)
+
+	# Width-limited estimate: average glyph width is roughly 0.55 * fontSize.
+	widthBased = textWidth / (longestLineChars * 0.55)
+
+	estimated = int(min(heightBased, widthBased))
+	return max(minFontSize, min(maxFontSize, estimated))
 	
 
 
@@ -193,7 +193,7 @@ def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken, frameId=None, fram
 		if frameId:
 			centerX -= frameOffsetX
 			centerY -= frameOffsetY
-		fontSize = calculateFontSize(textContent.split("\n")[0], textWidth, textHeight)
+		fontSize = calculateFontSize(textContent, textWidth, textHeight)
 
 		if shouldSkipTextBlock(textContent, minX, minY, textWidth, textHeight, shapes):
 			continue
