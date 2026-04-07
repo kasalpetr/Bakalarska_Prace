@@ -10,4 +10,5 @@ private:
     static cv::Mat maskShape(const cv::Mat& img, const std::string& filePath);
     static cv::Mat maskText(const cv::Mat& img, const std::string& filePath);
     static cv::Mat extractForegroundMask(const cv::Mat& img);
+    static cv::Scalar classifyResidualColor(const cv::Scalar& avgBgr);
 };

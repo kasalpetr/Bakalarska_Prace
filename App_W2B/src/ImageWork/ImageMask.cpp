@@ -18,9 +18,6 @@ cv::Mat ImageMask::createTransparentResidual(const cv::Mat &img, const cv::Mat &
 {
     cv::Mat foregroundMask = extractForegroundMask(img);
 
-    cv::Mat residual;
-    cv::cvtColor(maskedImg, residual, cv::COLOR_BGR2BGRA);
-
     cv::Mat maskedRegions;
     cv::inRange(maskedImg, cv::Scalar(255, 255, 255), cv::Scalar(255, 255, 255), maskedRegions);
 
@@ -30,12 +27,55 @@ cv::Mat ImageMask::createTransparentResidual(const cv::Mat &img, const cv::Mat &
     cv::Mat alpha;
     cv::bitwise_and(foregroundMask, keepRegions, alpha);
 
+    cv::Mat residual(img.rows, img.cols, CV_8UC4, cv::Scalar(0, 0, 0, 0));
+    cv::Mat filteredAlpha = cv::Mat::zeros(alpha.size(), alpha.type());
+
+    cv::Mat labels;
+    cv::Mat stats;
+    cv::Mat centroids;
+    int componentCount = cv::connectedComponentsWithStats(alpha, labels, stats, centroids, 8, CV_32S);
+
+    for (int label = 1; label < componentCount; ++label)
+    {
+        int area = stats.at<int>(label, cv::CC_STAT_AREA);
+        if (area < 26)
+        {
+            continue;
+        }
+
+        cv::Mat componentMask = labels == label;
+        cv::Scalar avgBgr = cv::mean(img, componentMask);
+        cv::Scalar classifiedColor = classifyResidualColor(avgBgr);
+
+        residual.setTo(cv::Scalar(classifiedColor[0], classifiedColor[1], classifiedColor[2], 255), componentMask);
+        filteredAlpha.setTo(255, componentMask);
+    }
+
     std::vector<cv::Mat> channels;
     cv::split(residual, channels);
-    channels[3] = alpha;
+    channels[3] = filteredAlpha;
     cv::merge(channels, residual);
 
     return residual;
+}
+
+cv::Scalar ImageMask::classifyResidualColor(const cv::Scalar &avgBgr)
+{
+    cv::Scalar red(0, 0, 255);
+    cv::Scalar green(0, 255, 0);
+    cv::Scalar blue(255, 0, 0);
+    cv::Scalar black(0, 0, 0);
+    cv::Scalar orange(0, 165, 255);
+
+    if (avgBgr[0] > avgBgr[1] && avgBgr[0] > avgBgr[2])
+        return blue;
+    else if (avgBgr[1] > avgBgr[0] && avgBgr[1] > avgBgr[2])
+        return green;
+    else if (avgBgr[2] > avgBgr[0] && avgBgr[2] > avgBgr[1])
+        return red;
+    else if (avgBgr[0] > 100 && avgBgr[1] > 100 && avgBgr[2] < 100)
+        return orange;
+    return black;
 }
 
 cv::Mat ImageMask::extractForegroundMask(const cv::Mat &img)

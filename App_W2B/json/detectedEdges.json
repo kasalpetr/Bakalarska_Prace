@@ -12,9 +12,9 @@
       "y": 946
     },
     "targetShapeId": 10,
-    "startMiroId": "3458764666806594032",
-    "endMiroId": "3458764666806594037",
-    "miroConnectorId": "3458764666806594070"
+    "startMiroId": "3458764666808976642",
+    "endMiroId": "3458764666808976645",
+    "miroConnectorId": "3458764666808976672"
   },
   {
     "angle": -83.00807189941406,
@@ -29,9 +29,9 @@
       "y": 599
     },
     "targetShapeId": 1,
-    "startMiroId": "3458764666806593986",
-    "endMiroId": "3458764666806593992",
-    "miroConnectorId": "3458764666806594073"
+    "startMiroId": "3458764666808976587",
+    "endMiroId": "3458764666808976596",
+    "miroConnectorId": "3458764666808976676"
   },
   {
     "angle": 76.10881042480469,
@@ -46,9 +46,9 @@
       "y": 152
     },
     "targetShapeId": 6,
-    "startMiroId": "3458764666806594022",
-    "endMiroId": "3458764666806594018",
-    "miroConnectorId": "3458764666806594075"
+    "startMiroId": "3458764666808976636",
+    "endMiroId": "3458764666808976630",
+    "miroConnectorId": "3458764666808976680"
   },
   {
     "angle": -79.95797729492188,
@@ -63,8 +63,8 @@
       "y": 626
     },
     "targetShapeId": 1,
-    "startMiroId": "3458764666806593986",
-    "endMiroId": "3458764666806593992",
-    "miroConnectorId": "3458764666806594077"
+    "startMiroId": "3458764666808976587",
+    "endMiroId": "3458764666808976596",
+    "miroConnectorId": "3458764666808976681"
   }
 ]
