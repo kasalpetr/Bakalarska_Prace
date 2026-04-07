@@ -1,87 +1,87 @@
 [
   {
-    "angle": -2.2906100749969482,
+    "angle": 4.763641834259033,
     "end": {
-      "x": 633,
-      "y": 947
+      "x": 301,
+      "y": 562
     },
-    "length": 50.039984012787215,
-    "sourceShapeId": 9,
+    "length": 108.37435120913067,
+    "sourceShapeId": 2,
     "start": {
-      "x": 583,
-      "y": 949
+      "x": 193,
+      "y": 553
     },
-    "targetShapeId": 10,
-    "startMiroId": "3458764666480719746",
-    "endMiroId": "3458764666480719750",
-    "miroConnectorId": "3458764666480719782"
+    "targetShapeId": 1,
+    "startMiroId": "3458764666769152584",
+    "endMiroId": "3458764666769152580",
+    "miroConnectorId": "3458764666769152599"
   },
   {
-    "angle": -3.4336302280426025,
+    "angle": 1.9414863586425781,
     "end": {
-      "x": 633,
-      "y": 927
+      "x": 306,
+      "y": 328
     },
-    "length": 50.08991914547278,
-    "sourceShapeId": 9,
+    "length": 118.06777714516353,
+    "sourceShapeId": 3,
     "start": {
-      "x": 583,
-      "y": 930
+      "x": 188,
+      "y": 324
     },
-    "targetShapeId": 10,
-    "startMiroId": "3458764666480719746",
-    "endMiroId": "3458764666480719750",
-    "miroConnectorId": "3458764666480719787"
+    "targetShapeId": 4,
+    "startMiroId": "3458764666769152588",
+    "endMiroId": "3458764666769152593",
+    "miroConnectorId": "3458764666769152601"
   },
   {
-    "angle": -0.6902771592140198,
+    "angle": 45.0,
     "end": {
-      "x": 623,
-      "y": 915
+      "x": 222,
+      "y": 670
     },
-    "length": 83.00602387778854,
-    "sourceShapeId": 9,
+    "length": 115.96551211459379,
+    "sourceShapeId": 2,
     "start": {
-      "x": 540,
-      "y": 916
+      "x": 140,
+      "y": 588
     },
-    "targetShapeId": 10,
-    "startMiroId": "3458764666480719746",
-    "endMiroId": "3458764666480719750",
-    "miroConnectorId": "3458764666480719789"
+    "targetShapeId": 0,
+    "startMiroId": "3458764666769152584",
+    "endMiroId": "3458764666769152561",
+    "miroConnectorId": "3458764666769152606"
   },
   {
-    "angle": -1.9091525077819824,
+    "angle": 79.85445404052734,
     "end": {
-      "x": 621,
-      "y": 911
+      "x": 123,
+      "y": 487
     },
-    "length": 60.03332407921454,
-    "sourceShapeId": 9,
+    "length": 96.5090669315583,
+    "sourceShapeId": 3,
     "start": {
-      "x": 561,
-      "y": 913
+      "x": 106,
+      "y": 392
     },
-    "targetShapeId": 10,
-    "startMiroId": "3458764666480719746",
-    "endMiroId": "3458764666480719750",
-    "miroConnectorId": "3458764666480719843"
+    "targetShapeId": 2,
+    "startMiroId": "3458764666769152588",
+    "endMiroId": "3458764666769152584",
+    "miroConnectorId": "3458764666769152613"
   },
   {
-    "angle": 5.751401901245117,
+    "angle": -55.684913635253906,
     "end": {
-      "x": 721,
-      "y": 923
+      "x": 357,
+      "y": 607
     },
-    "length": 139.70325694127536,
-    "sourceShapeId": 9,
+    "length": 76.27581530209953,
+    "sourceShapeId": 0,
     "start": {
-      "x": 582,
-      "y": 909
+      "x": 314,
+      "y": 670
     },
-    "targetShapeId": 10,
-    "startMiroId": "3458764666480719746",
-    "endMiroId": "3458764666480719750",
-    "miroConnectorId": "3458764666480719846"
+    "targetShapeId": 1,
+    "startMiroId": "3458764666769152561",
+    "endMiroId": "3458764666769152580",
+    "miroConnectorId": "3458764666769152618"
   }
 ]
