@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "Table3.jpg").string(), (appRoot / "json" / "imageSize.json").string()); // Load the image
+    cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "TextTable.jpg").string(), (appRoot / "json" / "imageSize.json").string()); // Load the image
     // cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "GraphText.jpg").string(), (appRoot / "json" / "imageSize.json").string()); // Load the image
     // cv::Mat image = ImageLoader::loadImage((appRoot / "Img" / "TextShape.jpg").string(), (appRoot / "json" / "imageSize.json").string()); // Load the image
 

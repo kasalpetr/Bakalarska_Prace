@@ -1,72 +1,32 @@
 [
   {
     "colorHex": "#FF0000",
-    "height": 48,
+    "height": 28,
     "id": 0,
     "type": "rectangle",
-    "width": 52,
-    "x": 566,
-    "y": 663,
-    "miroId": "3458764666830230533"
+    "width": 35,
+    "x": 704,
+    "y": 889,
+    "miroId": "3458764666830383875"
   },
   {
-    "colorHex": "#0000FF",
-    "height": 101,
+    "colorHex": "#FF0000",
+    "height": 41,
     "id": 1,
-    "type": "rectangle",
-    "width": 78,
-    "x": 33,
-    "y": 617,
-    "miroId": "3458764666830230539"
+    "type": "triangle",
+    "width": 93,
+    "x": 310,
+    "y": 569,
+    "miroId": "3458764666830383890"
   },
   {
     "colorHex": "#FF0000",
-    "height": 105,
+    "height": 74,
     "id": 2,
-    "type": "rectangle",
-    "width": 147,
-    "x": 296,
-    "y": 617,
-    "miroId": "3458764666830230541"
-  },
-  {
-    "colorHex": "#00FF00",
-    "height": 112,
-    "id": 3,
     "type": "triangle",
-    "width": 268,
-    "x": 213,
-    "y": 623,
-    "miroId": "3458764666830230544"
-  },
-  {
-    "colorHex": "#0000FF",
-    "height": 62,
-    "id": 4,
-    "type": "triangle",
-    "width": 217,
-    "x": 1047,
-    "y": 606,
-    "miroId": "3458764666830230547"
-  },
-  {
-    "colorHex": "#FF0000",
-    "height": 60,
-    "id": 5,
-    "type": "triangle",
-    "width": 230,
-    "x": 538,
-    "y": 287,
-    "miroId": "3458764666830230551"
-  },
-  {
-    "colorHex": "#00FF00",
-    "height": 23,
-    "id": 6,
-    "type": "circle",
-    "width": 23,
-    "x": 351,
-    "y": 718,
-    "miroId": "3458764666830230552"
+    "width": 141,
+    "x": 22,
+    "y": 364,
+    "miroId": "3458764666830383899"
   }
 ]
