@@ -1,19 +1,21 @@
 #include "ImageLoader.hpp"
 #include <fstream>
 
-void ImageLoader::saveImageSize(const cv::Mat& img, const std::string& imageSizeJsonPath)
+void ImageLoader::saveImageConfig(const cv::Mat& img, const std::string& imagePath, const std::string& outputPath)
 {
-    if (imageSizeJsonPath.empty()) {
+    if (outputPath.empty()) {
         return;
     }
 
-    std::ofstream out(imageSizeJsonPath);
+    std::ofstream out(outputPath);
     if (!out.is_open()) {
-        std::cerr << "Failed to write image size to " << imageSizeJsonPath << std::endl;
+        std::cerr << "Failed to write image config to " << outputPath << std::endl;
         return;
     }
 
-    out << "{\"width\": " << img.cols << ", \"height\": " << img.rows << "}";
+    out << "{\"width\": " << img.cols
+        << ", \"height\": " << img.rows
+        << ", \"path\": \"" << imagePath << "\"}";
 }
 
 cv::Mat ImageLoader::loadImage(const std::string &path, const std::string& imageSizeJsonPath)
@@ -40,13 +42,11 @@ cv::Mat ImageLoader::loadImage(const std::string &path, const std::string& image
         std::cout << "Image resized from " << img.cols << "x" << img.rows 
                   << " to " << new_width << "x" << new_height << std::endl;
 
-        saveImageSize(resizedImg, imageSizeJsonPath);
-        
+        saveImageConfig(resizedImg, path, imageSizeJsonPath);
         return resizedImg;
     }
 
-    saveImageSize(img, imageSizeJsonPath);
-    
+    saveImageConfig(img, path, imageSizeJsonPath);
     return img;
 }
 
