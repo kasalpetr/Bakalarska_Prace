@@ -144,7 +144,7 @@ std::vector<Shape> Detector::filterShapesAgainstText(const std::vector<Shape> &s
     return filtered;
 }
 
-std::vector<Detector::TextRegion> Detector::loadTextRegions(const std::string &filePath) const //load text regions from JSON
+std::vector<Detector::TextRegion> Detector::loadTextRegions(const std::string &filePath) const // load text regions from JSON
 {
     std::ifstream jsonFile(filePath);
     if (!jsonFile.is_open())
@@ -227,7 +227,6 @@ bool Detector::isShapeWronglyDetected(const Shape &shape, const std::vector<Text
         {
             continue;
         }
-        
 
         double interArea = static_cast<double>(inter.area());
         double overlapOnShape = interArea / shapeArea;
@@ -251,7 +250,7 @@ bool Detector::isShapeWronglyDetected(const Shape &shape, const std::vector<Text
         bool regionLooksLikeTextLine = false;
         if (visibleChars == 1)
         {
-            for (const auto &other : textRegions) 
+            for (const auto &other : textRegions)
             {
                 if (&other == &region)
                 {
@@ -287,7 +286,7 @@ bool Detector::isShapeWronglyDetected(const Shape &shape, const std::vector<Text
         // {
         //     continue;;
         // }
-        
+
         // rules for determining if a shape is likely a false positive due to text overlap
         bool likelyGlyphConflict = (shape.type == "circle") && (visibleChars == 1) &&
                                    overlapOnShape > 0.55 && overlapOnText > 0.55 &&
