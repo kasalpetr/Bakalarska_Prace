@@ -28,22 +28,22 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-
     std::string imagePath; // Path to the input image, will be set by UI or hardcoded for testing
+
     // Launch Python UI for image selection — saves chosen path into imageConfig.json
-    // std::string uiCall = "python3 \"" + (appRoot / "src" / "UI" / "UI.py").string() + "\"";
-    // if (system(uiCall.c_str()) != 0)
-    // {
-    //     std::cerr << "Image selection cancelled or UI failed." << std::endl;
-    //     return 1;
-    // }
-    // std::ifstream configFile((appRoot / "json" / "imageConfig.json").string());
-    // nlohmann::json config;
-    // configFile >> config;
-    // imagePath = config["path"].get<std::string>();
+    std::string uiCall = "python3 \"" + (appRoot / "src" / "UI" / "UI.py").string() + "\"";
+    if (system(uiCall.c_str()) != 0)
+    {
+        std::cerr << "Image selection cancelled or UI failed." << std::endl;
+        return 1;
+    }
+    std::ifstream configFile((appRoot / "json" / "imageConfig.json").string());
+    nlohmann::json config;
+    configFile >> config;
+    imagePath = config["path"].get<std::string>();
 
    
-    imagePath = (appRoot / "Img" / "table.jpg").string(); // For testing without UI, 
+    // imagePath = (appRoot / "Img" / "table.jpg").string(); // For testing without UI, 
 
     cv::Mat image = ImageLoader::loadImage(imagePath, (appRoot / "json" / "imageConfig.json").string()); // Load the image selected via UI
     Detector detector(image);                                                                            // Create a Detector object with the loaded image

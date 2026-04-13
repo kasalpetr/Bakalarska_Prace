@@ -1,0 +1,18 @@
+{
+    "googleVisionApiKey": "AIzaSyBe-G8nctRHZdRkWcltqKr7cEHFen0m05c",
+    "miroApiToken": "eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_JIhCDDG4eg1ch_5_XsYIOoAp-_E",
+    "selectedBoardName": "test2",
+    "selectedBoardId": "uXjVGjf1fec=",
+    "miroBoardId": "uXjVGjf1fec=",
+    "miroBoardName": "test2",
+    "boards": [
+        {
+            "name": "test",
+            "id": "uXjVG_yeA5I="
+        },
+        {
+            "name": "test2",
+            "id": "uXjVGjf1fec="
+        }
+    ]
+}
