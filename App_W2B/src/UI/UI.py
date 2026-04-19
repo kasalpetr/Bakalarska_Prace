@@ -31,6 +31,14 @@ def saveJson(path, data):
         json.dump(data, f, indent=4)
 
 
+def buildMiroHeaders(token):
+    return {
+        "accept": "application/json",
+        "content-type": "application/json",
+        "authorization": f"Bearer {token}",
+    }
+
+
 def parseBoards(config):
     boards = config.get("boards", [])
     parsedNames = []
@@ -69,6 +77,95 @@ def rebuildBoardsFromUi(selectedName=None):
     else:
         boardCombo.set("")
 
+
+def saveConnectionConfig(selectedBoardName=None):
+    global connectionConfig
+
+    connectionConfig = loadJson(connectionConfigPath)
+    connectionConfig["googleVisionApiKey"] = googleVisionEntry.get().strip() or connectionConfig.get("googleVisionApiKey", "")
+    connectionConfig["miroApiToken"] = miroTokenEntry.get().strip() or connectionConfig.get("miroApiToken", "")
+
+    if selectedBoardName is None:
+        selectedBoardName = boardCombo.get().strip()
+
+    selectedBoardId = boardMap.get(selectedBoardName, "")
+    connectionConfig["selectedBoardName"] = selectedBoardName or connectionConfig.get("selectedBoardName", "")
+    connectionConfig["selectedBoardId"] = selectedBoardId or connectionConfig.get("selectedBoardId", "")
+    connectionConfig["miroBoardName"] = connectionConfig.get("selectedBoardName", "")
+    connectionConfig["miroBoardId"] = connectionConfig.get("selectedBoardId", "")
+    connectionConfig["boards"] = [
+        {"name": name, "id": boardMap[name]}
+        for name in boardNames
+        if name in boardMap
+    ]
+    saveJson(connectionConfigPath, connectionConfig)
+
+
+def fetchBoards(token):
+    boards = []
+    cursor = None
+
+    while True:
+        params = {"limit": 50}
+        if cursor:
+            params["cursor"] = cursor
+
+        response = requests.get(
+            "https://api.miro.com/v2/boards",
+            headers=buildMiroHeaders(token),
+            params=params,
+            timeout=30,
+        )
+
+        if not response.ok:
+            messagebox.showerror("Failed to load boards", f"{response.status_code}: {response.text}")
+            return None
+
+        payload = response.json()
+        for item in payload.get("data", []):
+            boardId = str(item.get("id", "")).strip()
+            boardName = str(item.get("name", "")).strip()
+            if boardId and boardName:
+                boards.append({"name": boardName, "id": boardId})
+
+        cursor = payload.get("cursor") or payload.get("nextCursor")
+        if not cursor:
+            break
+
+    return boards
+
+
+def saveApiKeysAndLoadBoards():
+    global boardNames, boardMap
+
+    token = miroTokenEntry.get().strip() or connectionConfig.get("miroApiToken", "")
+    saveConnectionConfig()
+
+    if not token:
+        messagebox.showerror("Missing token", "Please enter the Miro API token first.")
+        return
+
+    boards = fetchBoards(token)
+    if boards is None:
+        return
+
+    boardMap = {}
+    boardNames = []
+    for board in boards:
+        name = board["name"]
+        boardId = board["id"]
+        if name not in boardMap:
+            boardMap[name] = boardId
+            boardNames.append(name)
+
+    selectedBoardName = connectionConfig.get("selectedBoardName", "")
+    if selectedBoardName not in boardMap and boardNames:
+        selectedBoardName = boardNames[0]
+
+    rebuildBoardsFromUi(selectedName=selectedBoardName)
+    saveConnectionConfig(selectedBoardName=selectedBoardName)
+    messagebox.showinfo("Done", "API keys saved and boards loaded.")
+
 # create board
 def createBoard():
     global boardNames, boardMap
@@ -89,11 +186,7 @@ def createBoard():
 
     response = requests.post(
         "https://api.miro.com/v2/boards",
-        headers={
-            "accept": "application/json",
-            "content-type": "application/json",
-            "authorization": f"Bearer {token}",
-        },
+        headers=buildMiroHeaders(token),
         json={"name": boardName},
         timeout=30,
     )
@@ -113,6 +206,7 @@ def createBoard():
     boardNames = [name for name in boardNames if name != createdBoardName]
     boardNames.append(createdBoardName)
     rebuildBoardsFromUi(selectedName=createdBoardName)
+    saveConnectionConfig(selectedBoardName=createdBoardName)
     messagebox.showinfo("Done", f"Board '{createdBoardName}' was created.")
 
 
@@ -146,7 +240,7 @@ def pickImageFile():
 
 
 def confirm():
-    global connectionConfig, cancelledByUser
+    global cancelledByUser
 
     if not selectedImagePath:
         return
@@ -155,27 +249,7 @@ def confirm():
     imageConfig["path"] = selectedImagePath
     saveJson(imageConfigPath, imageConfig)
 
-    connectionConfig = loadJson(connectionConfigPath)
-    enteredGoogleKey = googleVisionEntry.get().strip()
-    enteredMiroToken = miroTokenEntry.get().strip()
-    selectedBoardName = boardCombo.get().strip()
-    selectedBoardId = boardMap.get(selectedBoardName, "")
-
-    connectionConfig["googleVisionApiKey"] = enteredGoogleKey or connectionConfig.get("googleVisionApiKey", "")
-    connectionConfig["miroApiToken"] = enteredMiroToken or connectionConfig.get("miroApiToken", "")
-    connectionConfig["selectedBoardName"] = selectedBoardName or connectionConfig.get("selectedBoardName", "")
-    connectionConfig["selectedBoardId"] = selectedBoardId or connectionConfig.get("selectedBoardId", "")
-
-    connectionConfig["miroBoardName"] = connectionConfig.get("selectedBoardName", "")
-    connectionConfig["miroBoardId"] = connectionConfig.get("selectedBoardId", "")
-
-    connectionConfig["boards"] = [
-        {"name": name, "id": boardMap[name]}
-        for name in boardNames
-        if name in boardMap
-    ]
-
-    saveJson(connectionConfigPath, connectionConfig)
+    saveConnectionConfig()
 
     cancelledByUser = False
     root.destroy()
@@ -192,13 +266,11 @@ root.resizable(False, False)
 root.configure(bg="#f0f0f0")
 root.protocol("WM_DELETE_WINDOW", cancel)
 
-# --- Header ---
 headerFrame = tk.Frame(root, bg="#2c2c2c", height=50)
 headerFrame.pack(fill=tk.X)
 tk.Label(headerFrame, text="DigitalBoard", font=("Segoe UI", 14, "bold"),
          bg="#2c2c2c", fg="white", pady=12).pack(side=tk.LEFT, padx=16)
 
-# --- Image selection section ---
 selectFrame = tk.LabelFrame(root, text="Image selection", font=("Segoe UI", 10),
                              bg="#f0f0f0", padx=12, pady=12)
 selectFrame.pack(fill=tk.X, padx=20, pady=(16, 8))
@@ -231,11 +303,16 @@ miroTokenEntry = tk.Entry(apiFrame, font=("Segoe UI", 9), width=72)
 miroTokenEntry.grid(row=3, column=0, pady=(2, 10), sticky="ew")
 miroTokenEntry.insert(0, connectionConfig.get("miroApiToken", ""))
 
+saveApiBtn = tk.Button(apiFrame, text="Save API keys", font=("Segoe UI", 9),
+                       command=saveApiKeysAndLoadBoards, bg="#005a9e", fg="white",
+                       relief=tk.FLAT, padx=12, pady=5, cursor="hand2")
+saveApiBtn.grid(row=4, column=0, sticky="w", pady=(0, 10))
+
 tk.Label(apiFrame, text="Miro board", font=("Segoe UI", 9),
-         bg="#f0f0f0").grid(row=4, column=0, sticky="w")
+         bg="#f0f0f0").grid(row=5, column=0, sticky="w")
 
 boardRowFrame = tk.Frame(apiFrame, bg="#f0f0f0")
-boardRowFrame.grid(row=5, column=0, pady=(2, 0), sticky="ew")
+boardRowFrame.grid(row=6, column=0, pady=(2, 0), sticky="ew")
 
 boardCombo = ttk.Combobox(boardRowFrame, state="readonly", width=52)
 boardCombo.pack(side=tk.LEFT, fill=tk.X, expand=True)
@@ -260,7 +337,6 @@ rebuildBoardsFromUi(selectedName=preferredBoardName)
 
 apiFrame.grid_columnconfigure(0, weight=1)
 
-# --- Bottom bar ---
 bottomFrame = tk.Frame(root, bg="#f0f0f0")
 bottomFrame.pack(fill=tk.X, padx=20, pady=(8, 16), side=tk.BOTTOM)
 

@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     shapes = detector.detectShapes(image); // Detect shapes in the image and get their information as a vector of Shape objects
     JsonExporter::saveShapes(shapes, (appRoot / "json" / "detectedShapes.json").string());
     std::cout << "Detected " << shapes.size() << " shapes." << std::endl;
-    
+
     //mask
     cv::Mat mask = ImageMask::createMask(image); // Create a mask from the image for edge detection
     cv::Mat residual = ImageMask::createTransparentResidual(image, mask);

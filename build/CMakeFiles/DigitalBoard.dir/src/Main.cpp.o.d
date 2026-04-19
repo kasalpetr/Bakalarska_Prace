@@ -349,12 +349,12 @@ CMakeFiles/DigitalBoard.dir/src/Main.cpp.o: \
  /usr/include/c++/11/filesystem /usr/include/c++/11/bits/fs_fwd.h \
  /usr/include/c++/11/bits/fs_path.h /usr/include/c++/11/codecvt \
  /usr/include/c++/11/bits/fs_dir.h /usr/include/c++/11/bits/fs_ops.h \
- /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageLoader.hpp \
- /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Detector.hpp \
- /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
- /usr/include/nlohmann/json.hpp /usr/include/c++/11/iterator \
- /usr/include/c++/11/bits/stream_iterator.h /usr/include/c++/11/numeric \
- /usr/include/c++/11/bits/stl_numeric.h \
+ /usr/include/c++/11/fstream \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc /usr/include/nlohmann/json.hpp \
+ /usr/include/c++/11/iterator /usr/include/c++/11/bits/stream_iterator.h \
+ /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /usr/include/nlohmann/adl_serializer.hpp \
  /usr/include/nlohmann/detail/conversions/from_json.hpp \
@@ -407,6 +407,9 @@ CMakeFiles/DigitalBoard.dir/src/Main.cpp.o: \
  /usr/include/nlohmann/ordered_map.hpp \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+ /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageLoader.hpp \
+ /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Detector.hpp \
+ /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/EdgeDetector.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/../ShapeAndEdges.hpp \
  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/ShapeDetector.hpp \

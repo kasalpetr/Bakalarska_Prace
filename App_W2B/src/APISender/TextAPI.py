@@ -223,7 +223,6 @@ def uploadTexts(jsonPath=textJsonPath, apiToken=miroApiToken, frameId=None, fram
 
 		preview = textContent.split("\n")[0][:40]
 		print(
-			f"Failed to upload text '{preview}': "
 			f"{response.status_code} {response.text}"
 		)
 
