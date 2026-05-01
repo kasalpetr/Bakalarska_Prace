@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "colorHex": "#00FF00",
+    "height": 147,
+    "id": 0,
+    "type": "rectangle",
+    "width": 160,
+    "x": 1195,
+    "y": 607,
+    "miroId": "3458764670173552520"
+  },
+  {
+    "colorHex": "#00FF00",
+    "height": 183,
+    "id": 1,
+    "type": "stickyNote",
+    "width": 141,
+    "x": 1006,
+    "y": 561,
+    "miroId": "3458764670173552531"
+  },
+  {
+    "colorHex": "#00FF00",
+    "height": 171,
+    "id": 2,
+    "type": "stickyNote",
+    "width": 138,
+    "x": 828,
+    "y": 543,
+    "miroId": "3458764670173552545"
+  },
+  {
+    "colorHex": "#FF0000",
+    "height": 111,
+    "id": 3,
+    "type": "rectangle",
+    "width": 183,
+    "x": 5,
+    "y": 492,
+    "miroId": "3458764670173552560"
+  },
+  {
+    "colorHex": "#FF0000",
+    "height": 117,
+    "id": 4,
+    "type": "rectangle",
+    "width": 210,
+    "x": 338,
+    "y": 302,
+    "miroId": "3458764670173552573"
+  },
+  {
+    "colorHex": "#FF0000",
+    "height": 123,
+    "id": 5,
+    "type": "rectangle",
+    "width": 205,
+    "x": 945,
+    "y": 130,
+    "miroId": "3458764670173552584"
+  }
+]

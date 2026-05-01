@@ -108,7 +108,7 @@ bool Detector::isFalsePositiveCircle(const Shape &candidate, const std::vector<S
     cv::Rect candidateRect(candidate.x, candidate.y, candidate.width, candidate.height);
     for (const auto &shape : acceptedShapes)
     {
-        if (shape.type != "rectangle" && shape.type != "sticky_note")
+        if (shape.type != "rectangle" && shape.type != "stickyNote")
         {
             continue;
         }
