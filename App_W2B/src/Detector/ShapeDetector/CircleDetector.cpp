@@ -27,7 +27,7 @@ std::vector<Shape> CircleDetector::detect(const cv::Mat &processedImage, const c
             continue;
 
         double circularity = 4.0 * CV_PI * area / (perimeter * perimeter);
-        if (circularity < 0.62 || circularity > 1.25)
+        if (circularity < 0.75 || circularity > 1.25)
             continue;
 
         cv::Point2f center;
@@ -36,7 +36,7 @@ std::vector<Shape> CircleDetector::detect(const cv::Mat &processedImage, const c
         if (radius < 10.0f)
             continue;
 
-        float maxAllowedRadius = static_cast<float>(std::min(originalImage.cols, originalImage.rows)) * 0.20f;
+        float maxAllowedRadius = static_cast<float>(std::min(originalImage.cols, originalImage.rows)) * 0.40f;
         if (radius > maxAllowedRadius)
             continue;
 
