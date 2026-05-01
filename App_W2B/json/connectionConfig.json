@@ -1,10 +1,10 @@
 {
     "googleVisionApiKey": "AIzaSyBe-G8nctRHZdRkWcltqKr7cEHFen0m05c",
     "miroApiToken": "eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_jSs5wt0OO2zTe57HzbWVDtm8qDA",
-    "selectedBoardName": "API Test",
-    "selectedBoardId": "uXjVG_yeA5I=",
-    "miroBoardName": "API Test",
-    "miroBoardId": "uXjVG_yeA5I=",
+    "selectedBoardName": "new",
+    "selectedBoardId": "uXjVGgAJaSg=",
+    "miroBoardName": "new",
+    "miroBoardId": "uXjVGgAJaSg=",
     "boards": [
         {
             "name": "new",
