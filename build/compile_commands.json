@@ -1,62 +1,52 @@
 [
 {
-  "directory": "/home/kasal/Bakalarka/Bakalarska_Prace/build",
-  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\\\"/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B\\\" -I/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Main.cpp.o -c /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Main.cpp",
-  "file": "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Main.cpp",
-  "output": "CMakeFiles/DigitalBoard.dir/src/Main.cpp.o"
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\"\\\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B\\\"\" -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Main.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Main.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Main.cpp"
 },
 {
-  "directory": "/home/kasal/Bakalarka/Bakalarska_Prace/build",
-  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\\\"/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B\\\" -I/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageLoader.cpp.o -c /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageLoader.cpp",
-  "file": "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageLoader.cpp",
-  "output": "CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageLoader.cpp.o"
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\"\\\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B\\\"\" -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageLoader.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageLoader.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageLoader.cpp"
 },
 {
-  "directory": "/home/kasal/Bakalarka/Bakalarska_Prace/build",
-  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\\\"/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B\\\" -I/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageMask.cpp.o -c /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageMask.cpp",
-  "file": "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageMask.cpp",
-  "output": "CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageMask.cpp.o"
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\"\\\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B\\\"\" -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageMask.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageMask.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageMask.cpp"
 },
 {
-  "directory": "/home/kasal/Bakalarka/Bakalarska_Prace/build",
-  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\\\"/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B\\\" -I/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o -c /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Detector.cpp",
-  "file": "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Detector.cpp",
-  "output": "CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o"
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\"\\\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B\\\"\" -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/Detector.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Detector.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/Detector.cpp"
 },
 {
-  "directory": "/home/kasal/Bakalarka/Bakalarska_Prace/build",
-  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\\\"/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B\\\" -I/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/EdgeDetector.cpp.o -c /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/EdgeDetector.cpp",
-  "file": "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/EdgeDetector.cpp",
-  "output": "CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/EdgeDetector.cpp.o"
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\"\\\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B\\\"\" -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/EdgeDetector.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/EdgeDetector.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/EdgeDetector.cpp"
 },
 {
-  "directory": "/home/kasal/Bakalarka/Bakalarska_Prace/build",
-  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\\\"/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B\\\" -I/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o -c /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/GeometryUtils.cpp",
-  "file": "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/GeometryUtils.cpp",
-  "output": "CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o"
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\"\\\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B\\\"\" -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/GeometryUtils.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/GeometryUtils.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/GeometryUtils.cpp"
 },
 {
-  "directory": "/home/kasal/Bakalarka/Bakalarska_Prace/build",
-  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\\\"/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B\\\" -I/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExporter.cpp.o -c /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExporter.cpp",
-  "file": "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExporter.cpp",
-  "output": "CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExporter.cpp.o"
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\"\\\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B\\\"\" -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/JsonExport/JsonExporter.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExporter.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExporter.cpp"
 },
 {
-  "directory": "/home/kasal/Bakalarka/Bakalarska_Prace/build",
-  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\\\"/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B\\\" -I/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o -c /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/SquareDetector.cpp",
-  "file": "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/SquareDetector.cpp",
-  "output": "CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o"
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\"\\\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B\\\"\" -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/SquareDetector.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/SquareDetector.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/SquareDetector.cpp"
 },
 {
-  "directory": "/home/kasal/Bakalarka/Bakalarska_Prace/build",
-  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\\\"/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B\\\" -I/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o -c /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/TriangleDetector.cpp",
-  "file": "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/TriangleDetector.cpp",
-  "output": "CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o"
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\"\\\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B\\\"\" -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/TriangleDetector.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/TriangleDetector.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/TriangleDetector.cpp"
 },
 {
-  "directory": "/home/kasal/Bakalarka/Bakalarska_Prace/build",
-  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\\\"/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B\\\" -I/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o -c /home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/CircleDetector.cpp",
-  "file": "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/CircleDetector.cpp",
-  "output": "CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o"
+  "directory": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build",
+  "command": "/usr/bin/g++ -DAPP_W2B_ROOT=\"\\\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B\\\"\" -DJSON_DIAGNOSTICS=0 -DJSON_USE_IMPLICIT_CONVERSIONS=1 -I\"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork\" -isystem /usr/include/opencv4 -g -std=gnu++17 -o CMakeFiles/DigitalBoard.dir/src/Detector/ShapeDetector/CircleDetector.cpp.o -c \"/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/CircleDetector.cpp\"",
+  "file": "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/CircleDetector.cpp"
 }
 ]
