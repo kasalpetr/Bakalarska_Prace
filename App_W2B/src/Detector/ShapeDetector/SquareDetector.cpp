@@ -71,7 +71,7 @@ bool SquareDetector::isInnerSameCollor(const std::vector<cv::Point> &contour, co
 
     int innerPixels = cv::countNonZero(innerMask);
     int borderPixels = cv::countNonZero(borderMask);
-    if (innerPixels < 40 || borderPixels < 20)
+    if (innerPixels < 40 || borderPixels < 20) 
     {
         return false;
     }
@@ -81,21 +81,21 @@ bool SquareDetector::isInnerSameCollor(const std::vector<cv::Point> &contour, co
     cv::cvtColor(originalImage, hsvImage, cv::COLOR_BGR2HSV);
 
     cv::Mat whiteLikeMask;
-    cv::inRange(hsvImage, cv::Scalar(0, 0, 180), cv::Scalar(179, 60, 255), whiteLikeMask);
+    cv::inRange(hsvImage, cv::Scalar(0, 0, 170), cv::Scalar(179, 70, 255), whiteLikeMask);
 
     cv::Mat whiteInnerMask;
     cv::bitwise_and(whiteLikeMask, innerMask, whiteInnerMask);
 
     int whiteInnerPixels = cv::countNonZero(whiteInnerMask);
     double whiteRatio = static_cast<double>(whiteInnerPixels) / static_cast<double>(innerPixels);
-    if (whiteRatio >= 0.40)
+    if (whiteRatio >= 0.45)
     {
         return false;
     }
 
     cv::Scalar borderMean = cv::mean(originalImage, borderMask);
 
-    const double tolerance = 10.0; 
+    const double tolerance = 20.0; 
     cv::Scalar lower(std::max(0.0, borderMean[0] - tolerance),
                      std::max(0.0, borderMean[1] - tolerance),
                      std::max(0.0, borderMean[2] - tolerance));

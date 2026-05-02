@@ -3669,6 +3669,7 @@ CMakeFiles/DigitalBoard.dir/src/ImageWork/ImageMask.cpp.o: /mnt/c/FIT\ CVUT/baka
   /usr/include/opencv4/opencv2/video.hpp \
   /usr/include/opencv4/opencv2/video/tracking.hpp \
   /usr/include/opencv4/opencv2/video/background_segm.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
   /usr/include/nlohmann/json.hpp \
   /usr/include/c++/11/iterator \
   /usr/include/c++/11/bits/stream_iterator.h \
@@ -4715,7 +4716,8 @@ CMakeFiles/DigitalBoard.dir/src/Main.cpp.o: /mnt/c/FIT\ CVUT/bakalarka/Bakalarsk
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeDetector/ShapeDetector.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/JsonExport/JsonExporter.hpp \
   /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp \
-  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageMask.hpp
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/ImageWork/ImageMask.hpp \
+  /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Detector/ShapeAndEdges.hpp
 
 
 /mnt/c/FIT\ CVUT/bakalarka/Bakalarska_Prace/App_W2B/src/Main.cpp:

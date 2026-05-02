@@ -18,14 +18,17 @@ int main(int argc, char *argv[])
 {
     const std::filesystem::path appRoot(APP_W2B_ROOT);
     const std::vector<std::string> batchImagePaths = {
-        // Add test images here when you want to run the pipeline over multiple photos.
-        //  (appRoot / "Img" / "Rectangle.jpg").string(),
-        // (appRoot / "Img" / "3Shapes.jpg").string(),
-        // (appRoot / "Img" / "Circle.jpg").string(),
-        // (appRoot / "Img" / "Edge1.jpg").string(),
-        // (appRoot / "Img" / "GraphText.jpg").string(),
-        // (appRoot / "Img" / "RectangleText.jpg").string(),
-        // (appRoot / "Img" / "Triangle.jpg").string(),
+        // // Add test images here when you want to run the pipeline over multiple photos.k
+         (appRoot / "Img" / "Rectangle.jpg").string(),
+        (appRoot / "Img" / "3Shapes.jpg").string(),
+        (appRoot / "Img" / "Circle.jpg").string(),
+        (appRoot / "Img" / "Edge1.jpg").string(),
+        (appRoot / "Img" / "Edge2.jpg").string(),
+        (appRoot / "Img" / "GraphText.jpg").string(),
+        (appRoot / "Img" / "RectangleText.jpg").string(),
+        (appRoot / "Img" / "Triangle.jpg").string(),
+        // (appRoot / "Img" / "StickyNote.jpg").string(),
+        (appRoot / "Img" / "KomplexTable.jpg").string(),
     };
 
     // Ensure the working directory is set to the application root for consistent file access
@@ -91,13 +94,15 @@ int main(int argc, char *argv[])
 
         //mask
         cv::Mat mask = ImageMask::createMask(image); // Create a mask from the image for edge detection
-        cv::Mat residual = ImageMask::createTransparentResidual(image, mask);
-        cv::imwrite((appRoot / "Img" / "residual.png").string(), residual);
-
+        
         //edges
         edges = detector.detectEdges(mask, shapes); // Detect edges and bind them directly to detected shapes by internal IDs
         JsonExporter::saveEdges(edges, (appRoot / "json" / "detectedEdges.json").string());
         std::cout << "Detected " << edges.size() << " edges." << std::endl;
+        
+        mask = ImageMask::maskEdges(mask, edges); // Mask detected edges on the mask to remove them from the residual calculation
+        cv::Mat residual = ImageMask::createTransparentResidual(image, mask); // Create a transparent residual image that highlights the areas not covered by detection
+        cv::imwrite((appRoot / "Img" / "residual.png").string(), residual);
 
         system((std::string("python3 \"") + (appRoot / "src" / "APISender" / "Main.py").string() + "\"").c_str()); // Call the Python script to upload JSON data to API");
 

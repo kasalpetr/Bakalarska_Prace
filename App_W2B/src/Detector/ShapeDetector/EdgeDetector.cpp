@@ -13,14 +13,21 @@ std::vector<Edge> EdgeDetector::detectEdges(cv::Mat &image, const std::vector<Sh
     cv::Mat maskedRegions;
     cv::threshold(grayImage, maskedRegions, 250, 255, cv::THRESH_BINARY);
 
-    cv::Mat expandKernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(11, 11));
+    cv::Mat borderKernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(15, 15));
+    cv::Mat dilatedForMask;
+    cv::dilate(maskedRegions, dilatedForMask, borderKernel);
+    cv::Mat shapesMaskInv;
+    cv::bitwise_not(dilatedForMask, shapesMaskInv);
+    cv::bitwise_and(lineCandidates, shapesMaskInv, lineCandidates);
+
+    cv::Mat expandKernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5));
     cv::dilate(maskedRegions, maskedRegions, expandKernel);
 
     cv::Mat edgeLabels;
     cv::connectedComponents(maskedRegions, edgeLabels, 8, CV_32S);
 
     std::vector<cv::Vec4i> rawLines;
-    cv::HoughLinesP(lineCandidates, rawLines, 1, CV_PI / 180, 25, 45, 35);
+    cv::HoughLinesP(lineCandidates, rawLines, 1, CV_PI / 180, 30, 50, 35);
 
     std::vector<Edge> acceptedEdges;
     for (const auto &line : rawLines)
@@ -28,8 +35,8 @@ std::vector<Edge> EdgeDetector::detectEdges(cv::Mat &image, const std::vector<Sh
         cv::Point start(line[0], line[1]);
         cv::Point end(line[2], line[3]);
 
-        int startLabel = getNearbyMaskLabel(edgeLabels, start, 12);
-        int endLabel = getNearbyMaskLabel(edgeLabels, end, 12);
+        int startLabel = getNearbyMaskLabel(edgeLabels, start, 6);
+        int endLabel = getNearbyMaskLabel(edgeLabels, end, 6);
 
         if (startLabel <= 0 || endLabel <= 0 || startLabel == endLabel)
         {
@@ -38,7 +45,8 @@ std::vector<Edge> EdgeDetector::detectEdges(cv::Mat &image, const std::vector<Sh
 
         cv::Point2f direction(static_cast<float>(end.x - start.x), static_cast<float>(end.y - start.y));
         double length = cv::norm(direction);
-        if (length < 18.0 || length > 140.0)
+        // Zvýšení minimální délky pro eliminaci krátkých artefaktů
+        if (length < 50.0 || length > 2000.0)
         {
             continue;
         }
@@ -51,6 +59,23 @@ std::vector<Edge> EdgeDetector::detectEdges(cv::Mat &image, const std::vector<Sh
 
         int targetShapeId = findClosestShapeId(end, shapes, sourceShapeId);
         if (targetShapeId < 0)
+        {
+            continue;
+        }
+
+        
+        const Shape *srcShape = nullptr, *tgtShape = nullptr;
+        for (const auto &s : shapes)
+        {
+            if (s.id == sourceShapeId) srcShape = &s;
+            if (s.id == targetShapeId) tgtShape = &s;
+        }
+        if (srcShape && tgtShape && shapeBoundingBoxDistance(*srcShape, *tgtShape) < 30.0)
+        {
+            continue;
+        }
+
+        if (edgeExistsBetweenShapes(acceptedEdges, sourceShapeId, targetShapeId))
         {
             continue;
         }
@@ -71,7 +96,7 @@ std::vector<Edge> EdgeDetector::detectEdges(cv::Mat &image, const std::vector<Sh
         bool isDuplicate = std::any_of(
             dedupedEdges.begin(),
             dedupedEdges.end(),
-            [&](const Edge &kept) { return computeEndpointDistance(edge, kept) < 20.0; });
+            [&](const Edge &kept) { return computeEndpointDistance(edge, kept) < 20.0; }); 
 
         if (!isDuplicate)
         {
@@ -100,8 +125,18 @@ cv::Mat EdgeDetector::preprocessImage(const cv::Mat &image) const // function pr
         13,
         2);
 
-    cv::Mat closeKernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(5, 5));
+    // Mírnější uzavření, aby se nezahladily tenké čáry mezi objekty
+    cv::Mat closeKernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
     cv::morphologyEx(binary, binary, cv::MORPH_CLOSE, closeKernel);
+    
+    // Přidat edge detection pomocí Canny pro lepší detekci čar
+    cv::Mat edges;
+    cv::Canny(grayImage, edges, 30, 90, 3);
+    cv::dilate(edges, edges, cv::Mat(), cv::Point(-1, -1), 1);
+    
+    // Zkombinovat binary a edges
+    cv::bitwise_or(binary, edges, binary);
+    
     return binary;
 }
 
@@ -132,7 +167,7 @@ int EdgeDetector::getNearbyMaskLabel(const cv::Mat &edgeLabels, const cv::Point 
 
 int EdgeDetector::findClosestShapeId(const cv::Point &point, const std::vector<Shape> &shapes, int excludedShapeId) const // function finds the closest shape ID to a given point, excluding a specific shape ID
 {
-    constexpr double maxDistance = 75.0;
+    constexpr double maxDistance = 10.0; 
 
     int closestShapeId = -1;
     double bestDistance = maxDistance;
@@ -167,11 +202,31 @@ double EdgeDetector::pointToShapeDistance(const cv::Point &point, const Shape &s
     return std::hypot(dx, dy);
 }
 
+double EdgeDetector::shapeBoundingBoxDistance(const Shape &a, const Shape &b) const
+{
+    const int dx = std::max({a.x - (b.x + b.width), b.x - (a.x + a.width), 0});
+    const int dy = std::max({a.y - (b.y + b.height), b.y - (a.y + a.height), 0});
+    return std::hypot(dx, dy);
+}
+
 double EdgeDetector::computeEndpointDistance(const Edge &a, const Edge &b) const
 {
     double direct = std::max(cv::norm(cv::Point2f(a.start - b.start)), cv::norm(cv::Point2f(a.end - b.end)));
     double reverse = std::max(cv::norm(cv::Point2f(a.start - b.end)), cv::norm(cv::Point2f(a.end - b.start)));
     return std::min(direct, reverse);
+}
+
+bool EdgeDetector::edgeExistsBetweenShapes(const std::vector<Edge> &edges, int shapeId1, int shapeId2) const
+{
+    for (const auto &edge : edges)
+    {
+        if ((edge.sourceShapeId == shapeId1 && edge.targetShapeId == shapeId2) ||
+            (edge.sourceShapeId == shapeId2 && edge.targetShapeId == shapeId1))
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void EdgeDetector::drawDetectedEdges(cv::Mat &image, const std::vector<Edge> &edges) const

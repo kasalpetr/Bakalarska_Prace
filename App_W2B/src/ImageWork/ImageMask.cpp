@@ -127,6 +127,7 @@ cv::Mat ImageMask::maskShape(const cv::Mat &img, const std::string &filePath) //
         int width = item["width"];
         int height = item["height"];
 
+    
         // Ensure the rectangle is within the bounds of the image
         x = std::max(0, x);
         y = std::max(0, y);
@@ -200,5 +201,17 @@ cv::Mat ImageMask::maskText(const cv::Mat &img, const std::string &filePath) // 
         cv::fillPoly(masked, std::vector<std::vector<cv::Point>>{points}, cv::Scalar(255, 255, 255));
     }
 
+    return masked;
+}
+
+cv::Mat ImageMask::maskEdges(const cv::Mat &img, const std::vector<Edge> &edges)
+{
+    cv::Mat masked = img.clone();
+    for (const auto &edge : edges)
+    {
+
+        cv::line(masked, edge.start, edge.end, cv::Scalar(255, 255, 255), 10);
+
+    }
     return masked;
 }
