@@ -30,6 +30,7 @@ add_executable(DigitalBoard
     src/Detector/ShapeDetector/SquareDetector.cpp
     src/Detector/ShapeDetector/TriangleDetector.cpp
     src/Detector/ShapeDetector/CircleDetector.cpp
+    src/Test/TestRunner.cpp
     )
 
 target_compile_definitions(DigitalBoard PRIVATE APP_W2B_ROOT=\"${CMAKE_CURRENT_SOURCE_DIR}\")

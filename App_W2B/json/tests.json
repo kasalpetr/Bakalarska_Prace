@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Rectangle",
+    "imagePath": "Img/Rectangle.jpg",
+    "expected": {
+      "shapeCount": 1,
+      "edgeCount": 0,
+      "shapeTypes": ["rectangle"]
+    }
+  },
+  {
+    "name": "3 Shapes",
+    "imagePath": "Img/3Shapes.jpg",
+    "expected": {
+      "shapeCount": 3,
+      "edgeCount": 0,
+        "shapeTypes": ["rectangle", "rectangle", "triangle"]
+    }
+  },
+  {
+    "name": "Circle",
+    "imagePath": "Img/Circle.jpg",
+    "expected": {
+      "shapeCount": 1,
+      "edgeCount": 0,
+      "shapeTypes": ["circle"]
+    }
+  },
+  {
+    "name": "Edge1",
+    "imagePath": "Img/Edge1.jpg",
+    "expected": {
+      "shapeCount": 2,
+      "edgeCount": 1,
+       "shapeTypes": ["rectangle", "rectangle"]
+    }
+  },
+  {
+    "name": "Edge2",
+    "imagePath": "Img/Edge2.jpg",
+    "expected": {
+      "shapeCount": 2,
+      "edgeCount": 1,
+         "shapeTypes": ["rectangle", "rectangle"]
+    }
+  },
+  {
+    "name": "Graph with text",
+    "imagePath": "Img/GraphText.jpg",
+    "expected": {
+      "shapeCount": 5,
+      "edgeCount": 5,
+        "shapeTypes": ["rectangle", "rectangle", "rectangle", "rectangle", "rectangle"]
+    }
+  },
+  {
+    "name": "Rectangle with text",
+    "imagePath": "Img/RectangleText.jpg",
+    "expected": {
+      "shapeCount": 1,
+      "edgeCount": 0,
+      "shapeTypes": ["rectangle"]
+    }
+  },
+  {
+    "name": "Triangle",
+    "imagePath": "Img/Triangle.jpg",
+    "expected": {
+      "shapeCount": 1,
+      "edgeCount": 0,
+      "shapeTypes": ["triangle"]
+    }
+  }
+]
