@@ -70,5 +70,32 @@
       "edgeCount": 0,
       "shapeTypes": ["triangle"]
     }
+  },
+  {
+    "name": "3Rectangles",
+    "imagePath": "Img/3Rectangle.jpg",
+    "expected": {
+      "shapeCount": 3,
+      "edgeCount": 0,
+      "shapeTypes": ["rectangle", "rectangle", "rectangle"]
+    }
+  },
+  {
+    "name": "3Rectangles and Triangle",
+    "imagePath": "Img/RectangleAndTriangle.jpg",
+    "expected": {
+      "shapeCount": 5,
+      "edgeCount": 0,
+      "shapeTypes": ["rectangle", "rectangle", "triangle", "rectangle", "triangle"]
+    }
+  },
+  {
+    "name": "SticyNote",
+    "imagePath": "Img/StickyNote.jpg",
+    "expected": {
+      "shapeCount": 1,
+      "edgeCount": 0,
+      "shapeTypes": ["stickyNote"]
+    }
   }
 ]

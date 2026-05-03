@@ -94,25 +94,14 @@ bool SquareDetector::isInnerSameCollor(const std::vector<cv::Point> &contour, co
     }
 
     cv::Scalar borderMean = cv::mean(originalImage, borderMask);
+    cv::Scalar innerMean  = cv::mean(originalImage, innerMask);
 
-    const double tolerance = 20.0; 
-    cv::Scalar lower(std::max(0.0, borderMean[0] - tolerance),
-                     std::max(0.0, borderMean[1] - tolerance),
-                     std::max(0.0, borderMean[2] - tolerance));
-    cv::Scalar upper(std::min(255.0, borderMean[0] + tolerance),
-                     std::min(255.0, borderMean[1] + tolerance),
-                     std::min(255.0, borderMean[2] + tolerance));
+    double colorDist = std::sqrt(
+        std::pow(borderMean[0] - innerMean[0], 2.0) +
+        std::pow(borderMean[1] - innerMean[1], 2.0) +
+        std::pow(borderMean[2] - innerMean[2], 2.0));
 
-    cv::Mat similarColorMask;
-    cv::inRange(originalImage, lower, upper, similarColorMask);
-
-    cv::Mat similarInnerMask;
-    cv::bitwise_and(similarColorMask, innerMask, similarInnerMask);
-
-    int similarInnerPixels = cv::countNonZero(similarInnerMask);
-    double similarRatio = static_cast<double>(similarInnerPixels) / static_cast<double>(innerPixels);
-
-    return similarRatio >= 0.85;
+    return colorDist <= 40.0;
 }
 
 float SquareDetector::getContourAngle(const std::vector<cv::Point> &contour) // Override the default implementation to get the angle of a contour

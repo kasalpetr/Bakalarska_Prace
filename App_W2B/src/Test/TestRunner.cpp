@@ -8,13 +8,14 @@
 #include <iostream>
 #include <iomanip>
 
-namespace Color {
-    constexpr const char* RESET  = "\033[0m";
-    constexpr const char* BOLD   = "\033[1m";
-    constexpr const char* DIM    = "\033[2m";
-    constexpr const char* GREEN  = "\033[32m";
-    constexpr const char* RED    = "\033[31m";
-    constexpr const char* CYAN   = "\033[36m";
+namespace Color
+{
+    constexpr const char *RESET = "\033[0m";
+    constexpr const char *BOLD = "\033[1m";
+    constexpr const char *DIM = "\033[2m";
+    constexpr const char *GREEN = "\033[32m";
+    constexpr const char *RED = "\033[31m";
+    constexpr const char *CYAN = "\033[36m";
 }
 
 std::vector<TestRunner::TestCase> TestRunner::loadTests(const std::string &testsJsonPath)
@@ -55,7 +56,7 @@ std::vector<TestRunner::TestCase> TestRunner::loadTests(const std::string &tests
 }
 
 std::vector<TestRunner::TestResult> TestRunner::runAll(const std::vector<TestCase> &tests,
-                                                        const std::filesystem::path &appRoot)
+                                                       const std::filesystem::path &appRoot)
 {
     std::vector<TestResult> results;
 
@@ -64,7 +65,8 @@ std::vector<TestRunner::TestResult> TestRunner::runAll(const std::vector<TestCas
         TestResult result;
         result.name = tc.name;
 
-        std::cout << "\n" << Color::CYAN << Color::BOLD << "[TEST] Running: " << tc.name << Color::RESET << std::endl;
+        std::cout << "\n"
+                  << Color::CYAN << Color::BOLD << "[TEST] Running: " << tc.name << Color::RESET << std::endl;
 
         // Resolve image path (relative to appRoot if not absolute)
         std::filesystem::path imgPath(tc.imagePath);
@@ -80,6 +82,13 @@ std::vector<TestRunner::TestResult> TestRunner::runAll(const std::vector<TestCas
             results.push_back(result);
             continue;
         }
+
+        // call Google Vision API for text detection and save the result to JSON file
+        std::string tmpPath = (appRoot / "Img" / "TmpGoogleVision.png").string(); // Temporary path for the image to be processed by Google Vision API
+        cv::imwrite(tmpPath, image);
+        std::string PythonText = "python3 \"" + (appRoot / "src" / "APISender" / "GoogleVision.py").string() + "\" \"" + tmpPath + "\"";
+        system(PythonText.c_str());
+        std::filesystem::remove(tmpPath); // Clean up the temporary file after processing
 
         // Detect shapes
         Detector detector(image);
@@ -149,13 +158,14 @@ void TestRunner::printSummary(const std::vector<TestResult> &results)
     int passed = 0, failed = 0;
     const int width = 40;
 
-    std::cout << "\n" << Color::BOLD << std::string(60, '=') << Color::RESET << std::endl;
+    std::cout << "\n"
+              << Color::BOLD << std::string(60, '=') << Color::RESET << std::endl;
     std::cout << Color::BOLD << "  TEST SUMMARY" << Color::RESET << std::endl;
     std::cout << Color::BOLD << std::string(60, '=') << Color::RESET << std::endl;
 
     for (const auto &r : results)
     {
-        const char* statusColor = r.passed ? Color::GREEN : Color::RED;
+        const char *statusColor = r.passed ? Color::GREEN : Color::RED;
         std::string status = r.passed ? "PASS" : "FAIL";
         std::cout << std::left << std::setw(width) << r.name
                   << "  " << statusColor << Color::BOLD << "[" << status << "]" << Color::RESET
