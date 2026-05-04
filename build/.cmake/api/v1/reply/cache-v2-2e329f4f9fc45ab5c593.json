@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/kasal/Bakalarka/Bakalarska_Prace/build"
+			"value" : "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "31"
+			"value" : "24"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "6"
+			"value" : "0"
 		},
 		{
 			"name" : "CMAKE_COLOR_MAKEFILE",
@@ -119,7 +119,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/bin/cmake"
+			"value" : "/usr/local/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -131,7 +131,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/bin/cpack"
+			"value" : "/usr/local/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -143,7 +143,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/bin/ctest"
+			"value" : "/usr/local/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -155,10 +155,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "CXX compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/g++"
 		},
 		{
@@ -175,7 +175,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ar-14"
+			"value" : "/usr/bin/gcc-ar-11"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_RANLIB",
@@ -191,7 +191,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ranlib-14"
+			"value" : "/usr/bin/gcc-ranlib-11"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -283,10 +283,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "C compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/gcc"
 		},
 		{
@@ -303,7 +303,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ar-14"
+			"value" : "/usr/bin/gcc-ar-11"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -319,7 +319,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ranlib-14"
+			"value" : "/usr/bin/gcc-ranlib-11"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -416,6 +416,18 @@
 			],
 			"type" : "FILEPATH",
 			"value" : "CMAKE_DLLTOOL-NOTFOUND"
+		},
+		{
+			"name" : "CMAKE_EDIT_COMMAND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to cache edit program executable."
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/usr/local/bin/ccmake"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -543,7 +555,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/kasal/Bakalarka/Bakalarska_Prace/build/CMakeFiles/pkgRedirects"
+			"value" : "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -603,7 +615,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B"
+			"value" : "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -891,7 +903,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/share/cmake-3.31"
+			"value" : "/usr/local/share/cmake-3.24"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1102,22 +1114,6 @@
 			"value" : "/usr/bin/strip"
 		},
 		{
-			"name" : "CMAKE_TAPI",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a program."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "CMAKE_TAPI-NOTFOUND"
-		},
-		{
 			"name" : "CMAKE_UNAME",
 			"properties" : 
 			[
@@ -1155,7 +1151,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/kasal/Bakalarka/Bakalarska_Prace/build"
+			"value" : "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/build"
 		},
 		{
 			"name" : "DigitalBoard_IS_TOP_LEVEL",
@@ -1179,7 +1175,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/kasal/Bakalarka/Bakalarska_Prace/App_W2B"
+			"value" : "/mnt/c/FIT CVUT/bakalarka/Bakalarska_Prace/App_W2B"
 		},
 		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_OpenCV",
@@ -1191,7 +1187,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "[/usr][v4.10.0()]"
+			"value" : "[/usr][v4.5.4()]"
 		},
 		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_nlohmann_json",
@@ -1203,7 +1199,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "[/usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake][v3.11.3()]"
+			"value" : "[/usr/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake][v3.10.5()]"
 		},
 		{
 			"name" : "OpenCV_DIR",
@@ -1216,30 +1212,6 @@
 			],
 			"type" : "PATH",
 			"value" : "/usr/lib/x86_64-linux-gnu/cmake/opencv4"
-		},
-		{
-			"name" : "_CMAKE_CXX_LINKER_PUSHPOP_STATE_SUPPORTED",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "linker supports push/pop state"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "TRUE"
-		},
-		{
-			"name" : "_CMAKE_C_LINKER_PUSHPOP_STATE_SUPPORTED",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "linker supports push/pop state"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "TRUE"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
@@ -1263,7 +1235,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/usr/share/cmake/nlohmann_json"
+			"value" : "/usr/lib/cmake/nlohmann_json"
 		}
 	],
 	"kind" : "cache",
