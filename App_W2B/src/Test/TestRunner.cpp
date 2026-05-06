@@ -87,7 +87,8 @@ std::vector<TestRunner::TestResult> TestRunner::runAll(const std::vector<TestCas
         std::string tmpPath = (appRoot / "Img" / "TmpGoogleVision.png").string(); // Temporary path for the image to be processed by Google Vision API
         cv::imwrite(tmpPath, image);
         std::string PythonText = "python3 \"" + (appRoot / "src" / "APISender" / "GoogleVision.py").string() + "\" \"" + tmpPath + "\"";
-        system(PythonText.c_str());
+        auto ret = system(PythonText.c_str());
+        static_cast<void>(ret); // Ignore return value, as Google Vision API processing is not critical for shape/edge count tests
         std::filesystem::remove(tmpPath); // Clean up the temporary file after processing
 
         // Detect shapes

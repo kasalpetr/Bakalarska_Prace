@@ -75,7 +75,8 @@ int main(int argc, char *argv[])
     std::string tmpPath = (appRoot / "Img" / "TmpGoogleVision.png").string(); // Temporary path for the image to be processed by Google Vision API
     cv::imwrite(tmpPath, image);
     std::string PythonText = "python3 \"" + (appRoot / "src" / "APISender" / "GoogleVision.py").string() + "\" \"" + tmpPath + "\"";
-    system(PythonText.c_str());
+    auto ret = system(PythonText.c_str());
+    static_cast<void>(ret); // Ignore return value, as Google Vision API processing is not critical for shape/edge count tests
     std::filesystem::remove(tmpPath); // Clean up the temporary file after processing
 
     // detector
@@ -95,7 +96,8 @@ int main(int argc, char *argv[])
     cv::Mat residual = ImageMask::createTransparentResidual(image, mask); // Create a transparent residual image that highlights the areas not covered by detection
     cv::imwrite((appRoot / "Img" / "residual.png").string(), residual);
 
-    system((std::string("python3 \"") + (appRoot / "src" / "APISender" / "Main.py").string() + "\"").c_str()); // Call the Python script to upload JSON data to API
+    auto ret2 = system((std::string("python3 \"") + (appRoot / "src" / "APISender" / "Main.py").string() + "\"").c_str()); // Call the Python script to upload JSON data to API
+    static_cast<void>(ret2); // Ignore return value, as API upload is not critical for shape/edge count tests
 
     cv::imshow("Mask", mask); // Display the created mask
     cv::waitKey(0);
