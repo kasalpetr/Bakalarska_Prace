@@ -63,3 +63,19 @@ Co se stane při prvním spuštění:
 - vytvoří se lokální virtuální prostředí .venv
 - doinstalují se Python závislosti
 - spustí se DigitalBoard.exe
+
+## Získání Api klíče do Mira
+- Po příhlášení na https://miro.com/
+- Vpravo nahoře pod ikonkou svého jméno - profil (nastavení profilu)
+- Karta - Your apps 
+- Tlačítko Create new app
+- po vytvoření - přejít na část Permissions
+    - zaškrtnout boards:read a boards:write -> Tlačítko Install app and get OAuth token
+- Na závěr si už jen zkopírovat přístupový klíč
+
+## Získání Api kliče v Google Vision
+- Přihlásit na https://console.cloud.google.com/
+- Z navigace vybrat APIs & Services -> Credentials
+- Create Credentials -> API key
+- Vybrat Cloud Vision API
+- Na závěr vytvořit a uložit klíč
