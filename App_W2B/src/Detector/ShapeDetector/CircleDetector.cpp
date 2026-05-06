@@ -87,6 +87,5 @@ std::vector<Shape> CircleDetector::detect(const cv::Mat &processedImage, const c
         found.push_back(shape);
         acceptedRects.push_back(rect);
     }
-
     return found;
 }

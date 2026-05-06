@@ -319,7 +319,7 @@ boardCombo.pack(side=tk.LEFT, fill=tk.X, expand=True)
 
 createBoardBtn = tk.Button(
     boardRowFrame,
-    text="+ New board",
+    text="New board",
     font=("Segoe UI", 9),
     command=createBoard,
     bg="#005a9e",
