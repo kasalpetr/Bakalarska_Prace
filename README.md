@@ -26,3 +26,40 @@ Práce se zaměřuje na vytvoření proof-of-concept aplikace, která demonstruj
 - Testování navrženého řešení
 - Implementace a nasazení PoC s úpravami vycházejícími z výsledků testování
 - Vypracování technické dokumentace umožňující další rozvoj projektu a zhodnocení aktuálních omezení navrženého řešení
+
+
+## Sestavení aplikace
+
+### Linux
+
+Postup v adresáři App_W2B:
+
+1. Spusť instalační skript:
+
+```
+cd App_W2B
+chmod +x install.sh
+./install.sh
+```
+
+Skript nainstaluje systémové závislosti, Python balíčky, aplikaci přeloží a vytvoří binárku.
+
+2. Spusť aplikaci:
+
+```
+./build/DigitalBoard
+```
+
+### Windows (portable balíček)
+
+1. Rozbal připravený ZIP balíček aplikace.
+
+2. Nainstaluj Python 3 z python.org.
+Při instalaci doporučeno:
+
+3. V rozbalené složce spusť run_windows.bat
+
+Co se stane při prvním spuštění:
+- vytvoří se lokální virtuální prostředí .venv
+- doinstalují se Python závislosti
+- spustí se DigitalBoard.exe
