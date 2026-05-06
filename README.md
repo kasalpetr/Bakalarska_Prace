@@ -55,7 +55,6 @@ Skript nainstaluje systémové závislosti, Python balíčky, aplikaci přelož�
 1. Rozbal připravený ZIP balíček aplikace.
 
 2. Nainstaluj Python 3 z python.org.
-Při instalaci doporučeno:
 
 3. V rozbalené složce spusť run_windows.bat
 
