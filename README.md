@@ -54,14 +54,12 @@ Skript nainstaluje systémové závislosti, Python balíčky, aplikaci přelož�
 
 1. Rozbal připravený ZIP balíček aplikace.
 
-2. Nainstaluj Python 3 z python.org.
-
+2. Nainstaluj Python 3 z python.org. 
+    Nebo v PowerShell 
+    ```
+    winget install --id Python.Python.3.12 --exact
+    ```
 3. V rozbalené složce spusť run_windows.bat
-
-Co se stane při prvním spuštění:
-- vytvoří se lokální virtuální prostředí .venv
-- doinstalují se Python závislosti
-- spustí se DigitalBoard.exe
 
 ## Získání Api klíče do Mira
 - Po příhlášení na https://miro.com/
